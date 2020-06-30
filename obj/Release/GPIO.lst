@@ -1,0 +1,1115 @@
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE  1
+
+
+LOC    OBJECT CODE    LINE  SOURCE TEXT
+  VALUE
+
+                      00001 ;--------------------------------------------------------
+                      00002 ; File Created by SDCC : free open source ANSI-C Compiler
+                      00003 ; Version 3.5.0 #9253 (Jun 20 2015) (MINGW32)
+                      00004 ; This file was generated Tue Jun 30 22:58:10 2020
+                      00005 ;--------------------------------------------------------
+                      00006 ; PIC port for the 14-bit core
+                      00007 ;--------------------------------------------------------
+                      00008 ;       .file   "GPIO.c"
+                      00009         list    p=16f877a
+                      00010         radix dec
+                      00011         include "p16f877a.inc"
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Aug 07 2014
+                      00005 ;  MPASM PIC16F877A processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2014 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+                      00567         LIST
+                      00012 ;--------------------------------------------------------
+                      00013 ; external declarations
+                      00014 ;--------------------------------------------------------
+  0000                00015         extern  __gptrget1
+  0000                00016         extern  __gptrput1
+                      00017 
+  0000                00018         extern PSAVE
+  0000                00019         extern SSAVE
+  0000                00020         extern WSAVE
+  0000                00021         extern STK12
+  0000                00022         extern STK11
+  0000                00023         extern STK10
+  0000                00024         extern STK09
+  0000                00025         extern STK08
+  0000                00026         extern STK07
+  0000                00027         extern STK06
+  0000                00028         extern STK05
+  0000                00029         extern STK04
+  0000                00030         extern STK03
+  0000                00031         extern STK02
+  0000                00032         extern STK01
+  0000                00033         extern STK00
+                      00034 ;--------------------------------------------------------
+                      00035 ; global declarations
+                      00036 ;--------------------------------------------------------
+  0000                00037         global  _GPIO_Get_Port
+  0000                00038         global  _GPIO_Get_Port_Pin
+  0000                00039         global  _GPIO_Set_Port
+  0000                00040         global  _GPIO_Init_Port
+  0000                00041         global  _GPIO_Set_Port_pin
+  0000                00042         global  _GPIO_Init_Port_pin
+                      00043 
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE  2
+
+
+LOC    OBJECT CODE    LINE  SOURCE TEXT
+  VALUE
+
+                      00044 ;--------------------------------------------------------
+                      00045 ; global definitions
+                      00046 ;--------------------------------------------------------
+                      00047 ;--------------------------------------------------------
+                      00048 ; absolute symbol definitions
+                      00049 ;--------------------------------------------------------
+                      00050 ;--------------------------------------------------------
+                      00051 ; compiler-defined variables
+                      00052 ;--------------------------------------------------------
+                      00053 UDL_GPIO_0      udata
+0000                  00054 r0x101E res     1
+0001                  00055 r0x101F res     1
+0002                  00056 r0x1020 res     1
+0003                  00057 r0x1021 res     1
+0004                  00058 r0x1022 res     1
+0005                  00059 r0x1023 res     1
+0006                  00060 r0x1024 res     1
+0007                  00061 r0x1025 res     1
+0008                  00062 r0x1017 res     1
+0009                  00063 r0x1018 res     1
+000A                  00064 r0x1019 res     1
+000B                  00065 r0x101A res     1
+000C                  00066 r0x101C res     1
+000D                  00067 r0x101B res     1
+000E                  00068 r0x101D res     1
+000F                  00069 r0x1011 res     1
+0010                  00070 r0x1012 res     1
+0011                  00071 r0x1013 res     1
+0012                  00072 r0x1014 res     1
+0013                  00073 r0x1015 res     1
+0014                  00074 r0x1016 res     1
+0015                  00075 r0x100E res     1
+0016                  00076 r0x1004 res     1
+0017                  00077 r0x1005 res     1
+0018                  00078 r0x1006 res     1
+0019                  00079 r0x1008 res     1
+001A                  00080 r0x1009 res     1
+001B                  00081 r0x100A res     1
+001C                  00082 r0x1000 res     1
+                      00083 ;--------------------------------------------------------
+                      00084 ; initialized data
+                      00085 ;--------------------------------------------------------
+                      00086 ;--------------------------------------------------------
+                      00087 ; overlayable items in internal ram 
+                      00088 ;--------------------------------------------------------
+                      00089 ;       udata_ovr
+                      00090 ;--------------------------------------------------------
+                      00091 ; code
+                      00092 ;--------------------------------------------------------
+                      00093 code_GPIO       code
+                      00094 ;***
+                      00095 ;  pBlock Stats: dbName = C
+                      00096 ;***
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE  3
+
+
+LOC    OBJECT CODE    LINE  SOURCE TEXT
+  VALUE
+
+                      00097 ;entry:  _GPIO_Get_Port ;Function start
+                      00098 ; 2 exit points
+                      00099 ;has an exit
+                      00100 ;functions called:
+                      00101 ;   __gptrget1
+                      00102 ;   __gptrget1
+                      00103 ;6 compiler assigned registers:
+                      00104 ;   r0x1000
+                      00105 ;   r0x1001
+                      00106 ;   r0x1002
+                      00107 ;   STK01
+                      00108 ;   r0x1003
+                      00109 ;   STK00
+                      00110 ;; Starting pCode block
+0000                  00111 _GPIO_Get_Port  ;Function start
+                      00112 ; 2 exit points
+                      00113 ;       .line   40; "GPIO.c"    unsigned char GPIO_Get_Port(tPort Port)
+0000   ???? ????      00114         BANKSEL r0x1000
+0002   00??           00115         MOVWF   r0x1000
+                      00116 ;;1     MOVWF   r0x1001
+                      00117 ;       .line   44; "GPIO.c"    return *temp ;
+0003   00??           00118         MOVWF   STK01
+                      00119 ;;1     MOVF    r0x1003,W
+0004   00??           00120         MOVWF   STK00
+0005   3000           00121         MOVLW   0x00
+0006   ???? ????      00122         PAGESEL __gptrget1
+0008   2???           00123         CALL    __gptrget1
+0009   ???? ????      00124         PAGESEL $
+000B   ???? ????      00125         BANKSEL r0x1000
+000D   00??           00126         MOVWF   r0x1000
+000E   0008           00127         RETURN  
+                      00128 ; exit point of _GPIO_Get_Port
+                      00129 
+                      00130 ;***
+                      00131 ;  pBlock Stats: dbName = C
+                      00132 ;***
+                      00133 ;entry:  _GPIO_Get_Port_Pin     ;Function start
+                      00134 ; 2 exit points
+                      00135 ;has an exit
+                      00136 ;functions called:
+                      00137 ;   __gptrget1
+                      00138 ;   __gptrget1
+                      00139 ;10 compiler assigned registers:
+                      00140 ;   r0x1004
+                      00141 ;   STK00
+                      00142 ;   r0x1005
+                      00143 ;   r0x1006
+                      00144 ;   r0x1007
+                      00145 ;   STK01
+                      00146 ;   r0x1008
+                      00147 ;   r0x1009
+                      00148 ;   r0x100A
+                      00149 ;   r0x100B
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE  4
+
+
+LOC    OBJECT CODE    LINE  SOURCE TEXT
+  VALUE
+
+                      00150 ;; Starting pCode block
+000F                  00151 _GPIO_Get_Port_Pin      ;Function start
+                      00152 ; 2 exit points
+                      00153 ;       .line   35; "GPIO.c"    unsigned char GPIO_Get_Port_Pin(tPort Port , unsigned char pin )
+000F   ???? ????      00154         BANKSEL r0x1004
+0011   00??           00155         MOVWF   r0x1004
+0012   08??           00156         MOVF    STK00,W
+0013   00??           00157         MOVWF   r0x1005
+                      00158 ;;107   MOVF    r0x1004,W
+                      00159 ;;1     CLRF    r0x1007
+                      00160 ;;106   MOVF    r0x1006,W
+                      00161 ;       .line   37; "GPIO.c"    return REG_GET_BIT(Port,pin) ;
+0014   08??           00162         MOVF    r0x1004,W
+0015   00??           00163         MOVWF   r0x1006
+0016   00??           00164         MOVWF   STK01
+0017   08??           00165         MOVF    r0x1008,W
+0018   00??           00166         MOVWF   STK00
+0019   3000           00167         MOVLW   0x00
+001A   ???? ????      00168         PAGESEL __gptrget1
+001C   2???           00169         CALL    __gptrget1
+001D   ???? ????      00170         PAGESEL $
+001F   ???? ????      00171         BANKSEL r0x1004
+0021   00??           00172         MOVWF   r0x1004
+0022   3000           00173         MOVLW   0x00
+0023   00??           00174         MOVWF   r0x1008
+0024   3001           00175         MOVLW   0x01
+0025   00??           00176         MOVWF   r0x1006
+0026   08??           00177         MOVF    r0x1005,W
+0027   3C00           00178         SUBLW   0x00
+0028   1903           00179         BTFSC   STATUS,2
+0029   2???           00180         GOTO    _00142_DS_
+002A                  00181 _00141_DS_
+002A   ???? ????      00182         BANKSEL r0x1006
+002C   0D??           00183         RLF     r0x1006,F
+002D   0D??           00184         RLF     r0x1008,F
+002E   3E01           00185         ADDLW   0x01
+002F   1C03           00186         BTFSS   STATUS,0
+0030   2???           00187         GOTO    _00141_DS_
+0031                  00188 _00142_DS_
+0031   ???? ????      00189         BANKSEL r0x1004
+0033   08??           00190         MOVF    r0x1004,W
+0034   00??           00191         MOVWF   r0x1009
+0035   01??           00192         CLRF    r0x100A
+0036   08??           00193         MOVF    r0x1006,W
+0037   05??           00194         ANDWF   r0x1009,W
+0038   00??           00195         MOVWF   r0x1006
+0039   00??           00196         MOVWF   r0x1004
+003A   08??           00197         MOVF    r0x1008,W
+003B   05??           00198         ANDWF   r0x100A,W
+                      00199 ;;1     MOVWF   r0x100B
+003C   00??           00200         MOVWF   r0x1008
+                      00201 ;;105   MOVF    r0x1004,W
+003D   08??           00202         MOVF    r0x1005,W
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE  5
+
+
+LOC    OBJECT CODE    LINE  SOURCE TEXT
+  VALUE
+
+003E   3C00           00203         SUBLW   0x00
+003F   1903           00204         BTFSC   STATUS,2
+0040   2???           00205         GOTO    _00144_DS_
+0041                  00206 _00143_DS_
+0041   1003           00207         BCF     STATUS,0
+0042   ???? ????      00208         BANKSEL r0x1008
+0044   1B??           00209         BTFSC   r0x1008,7
+0045   1403           00210         BSF     STATUS,0
+0046   0C??           00211         RRF     r0x1008,F
+0047   0C??           00212         RRF     r0x1006,F
+0048   3E01           00213         ADDLW   0x01
+0049   1C03           00214         BTFSS   STATUS,0
+004A   2???           00215         GOTO    _00143_DS_
+004B                  00216 _00144_DS_
+004B   ???? ????      00217         BANKSEL r0x1006
+004D   08??           00218         MOVF    r0x1006,W
+004E   00??           00219         MOVWF   r0x1005
+004F   0008           00220         RETURN  
+                      00221 ; exit point of _GPIO_Get_Port_Pin
+                      00222 
+                      00223 ;***
+                      00224 ;  pBlock Stats: dbName = C
+                      00225 ;***
+                      00226 ;entry:  _GPIO_Set_Port ;Function start
+                      00227 ; 2 exit points
+                      00228 ;has an exit
+                      00229 ;functions called:
+                      00230 ;   __gptrput1
+                      00231 ;   __gptrput1
+                      00232 ;8 compiler assigned registers:
+                      00233 ;   r0x100C
+                      00234 ;   STK00
+                      00235 ;   r0x100D
+                      00236 ;   r0x100E
+                      00237 ;   r0x100F
+                      00238 ;   STK02
+                      00239 ;   STK01
+                      00240 ;   r0x1010
+                      00241 ;; Starting pCode block
+0050                  00242 _GPIO_Set_Port  ;Function start
+                      00243 ; 2 exit points
+0050   ???? ????      00244         BANKSEL r0x100E
+0052   00??           00245         MOVWF   r0x100E
+                      00246 ;;1     MOVWF   r0x100C
+                      00247 ;       .line   29; "GPIO.c"    void GPIO_Set_Port(tPort Port , unsigned char data)
+0053   08??           00248         MOVF    STK00,W
+                      00249 ;;1     MOVWF   r0x100D
+                      00250 ;       .line   32; "GPIO.c"    *temp = data ;
+0054   00??           00251         MOVWF   STK02
+0055   08??           00252         MOVF    r0x100E,W
+0056   00??           00253         MOVWF   STK01
+                      00254 ;;1     MOVF    r0x1010,W
+0057   00??           00255         MOVWF   STK00
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE  6
+
+
+LOC    OBJECT CODE    LINE  SOURCE TEXT
+  VALUE
+
+0058   3000           00256         MOVLW   0x00
+0059   ???? ????      00257         PAGESEL __gptrput1
+005B   2???           00258         CALL    __gptrput1
+005C   ???? ????      00259         PAGESEL $
+005E   0008           00260         RETURN  
+                      00261 ; exit point of _GPIO_Set_Port
+                      00262 
+                      00263 ;***
+                      00264 ;  pBlock Stats: dbName = C
+                      00265 ;***
+                      00266 ;entry:  _GPIO_Init_Port        ;Function start
+                      00267 ; 2 exit points
+                      00268 ;has an exit
+                      00269 ;functions called:
+                      00270 ;   __gptrput1
+                      00271 ;   __gptrput1
+                      00272 ;   __gptrput1
+                      00273 ;   __gptrput1
+                      00274 ;9 compiler assigned registers:
+                      00275 ;   r0x1011
+                      00276 ;   STK00
+                      00277 ;   r0x1012
+                      00278 ;   r0x1013
+                      00279 ;   r0x1014
+                      00280 ;   r0x1015
+                      00281 ;   r0x1016
+                      00282 ;   STK02
+                      00283 ;   STK01
+                      00284 ;; Starting pCode block
+005F                  00285 _GPIO_Init_Port ;Function start
+                      00286 ; 2 exit points
+005F   ???? ????      00287         BANKSEL r0x1013
+0061   00??           00288         MOVWF   r0x1013
+                      00289 ;       .line   17; "GPIO.c"    void GPIO_Init_Port(tPort Port , tPortDir direction )
+0062   00??           00290         MOVWF   r0x1011
+0063   08??           00291         MOVF    STK00,W
+0064   00??           00292         MOVWF   r0x1012
+                      00293 ;;109   MOVF    r0x1011,W
+                      00294 ;       .line   19; "GPIO.c"    volatile unsigned char * temp = (unsigned char*)(Port + Direction_REG_OF
+                            FSIT);
+0065   01??           00295         CLRF    r0x1014
+0066   3080           00296         MOVLW   0x80
+0067   07??           00297         ADDWF   r0x1013,W
+0068   00??           00298         MOVWF   r0x1013
+0069   00??           00299         MOVWF   r0x1011
+006A   01??           00300         CLRF    r0x1015
+006B   0D??           00301         RLF     r0x1015,F
+006C   3000           00302         MOVLW   0x00
+006D   07??           00303         ADDWF   r0x1015,F
+006E   08??           00304         MOVF    r0x1015,W
+006F   00??           00305         MOVWF   r0x1014
+                      00306 ;;104   MOVF    r0x1011,W
+0070   01??           00307         CLRF    r0x1016
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE  7
+
+
+LOC    OBJECT CODE    LINE  SOURCE TEXT
+  VALUE
+
+                      00308 ;       .line   20; "GPIO.c"    if(direction == OUT){
+0071   08??           00309         MOVF    r0x1012,W
+0072   1D03           00310         BTFSS   STATUS,2
+0073   2???           00311         GOTO    _00128_DS_
+                      00312 ;       .line   21; "GPIO.c"    *temp = 0b00000000 ;
+0074   3000           00313         MOVLW   0x00
+0075   00??           00314         MOVWF   STK02
+0076   08??           00315         MOVF    r0x1013,W
+0077   00??           00316         MOVWF   STK01
+0078   08??           00317         MOVF    r0x1014,W
+0079   00??           00318         MOVWF   STK00
+007A   08??           00319         MOVF    r0x1016,W
+007B   ???? ????      00320         PAGESEL __gptrput1
+007D   2???           00321         CALL    __gptrput1
+007E   ???? ????      00322         PAGESEL $
+0080   2???           00323         GOTO    _00130_DS_
+0081                  00324 _00128_DS_
+                      00325 ;       .line   23; "GPIO.c"    }else if(direction == IN ){
+0081   ???? ????      00326         BANKSEL r0x1012
+0083   08??           00327         MOVF    r0x1012,W
+0084   3A01           00328         XORLW   0x01
+0085   1D03           00329         BTFSS   STATUS,2
+0086   2???           00330         GOTO    _00130_DS_
+                      00331 ;       .line   24; "GPIO.c"    *temp = 0b11111111 ;
+0087   30FF           00332         MOVLW   0xff
+0088   00??           00333         MOVWF   STK02
+0089   08??           00334         MOVF    r0x1013,W
+008A   00??           00335         MOVWF   STK01
+008B   08??           00336         MOVF    r0x1014,W
+008C   00??           00337         MOVWF   STK00
+008D   08??           00338         MOVF    r0x1016,W
+008E   ???? ????      00339         PAGESEL __gptrput1
+0090   2???           00340         CALL    __gptrput1
+0091   ???? ????      00341         PAGESEL $
+0093                  00342 _00130_DS_
+0093   0008           00343         RETURN  
+                      00344 ; exit point of _GPIO_Init_Port
+                      00345 
+                      00346 ;***
+                      00347 ;  pBlock Stats: dbName = C
+                      00348 ;***
+                      00349 ;entry:  _GPIO_Set_Port_pin     ;Function start
+                      00350 ; 2 exit points
+                      00351 ;has an exit
+                      00352 ;functions called:
+                      00353 ;   __gptrget1
+                      00354 ;   __gptrput1
+                      00355 ;   __gptrget1
+                      00356 ;   __gptrput1
+                      00357 ;10 compiler assigned registers:
+                      00358 ;   r0x1017
+                      00359 ;   STK00
+                      00360 ;   r0x1018
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE  8
+
+
+LOC    OBJECT CODE    LINE  SOURCE TEXT
+  VALUE
+
+                      00361 ;   STK01
+                      00362 ;   r0x1019
+                      00363 ;   r0x101A
+                      00364 ;   r0x101B
+                      00365 ;   r0x101C
+                      00366 ;   r0x101D
+                      00367 ;   STK02
+                      00368 ;; Starting pCode block
+0094                  00369 _GPIO_Set_Port_pin      ;Function start
+                      00370 ; 2 exit points
+0094   ???? ????      00371         BANKSEL r0x101A
+0096   00??           00372         MOVWF   r0x101A
+                      00373 ;       .line   11; "GPIO.c"    void GPIO_Set_Port_pin(tPort Port , unsigned char pin , unsigned char da
+                            ta)
+0097   00??           00374         MOVWF   r0x1017
+0098   08??           00375         MOVF    STK00,W
+0099   00??           00376         MOVWF   r0x1018
+009A   08??           00377         MOVF    STK01,W
+009B   00??           00378         MOVWF   r0x1019
+                      00379 ;;103   MOVF    r0x1017,W
+                      00380 ;       .line   13; "GPIO.c"    REG_SET_BIT(Port, pin ,data);
+009C   01??           00381         CLRF    r0x101B
+009D   08??           00382         MOVF    r0x101A,W
+009E   00??           00383         MOVWF   STK01
+009F   08??           00384         MOVF    r0x101C,W
+00A0   00??           00385         MOVWF   STK00
+00A1   3000           00386         MOVLW   0x00
+00A2   ???? ????      00387         PAGESEL __gptrget1
+00A4   2???           00388         CALL    __gptrget1
+00A5   ???? ????      00389         PAGESEL $
+00A7   ???? ????      00390         BANKSEL r0x1017
+00A9   00??           00391         MOVWF   r0x1017
+00AA   3001           00392         MOVLW   0x01
+00AB   00??           00393         MOVWF   r0x101D
+00AC   08??           00394         MOVF    r0x1018,W
+00AD   3C00           00395         SUBLW   0x00
+00AE   1903           00396         BTFSC   STATUS,2
+00AF   2???           00397         GOTO    _00118_DS_
+00B0                  00398 _00117_DS_
+00B0   ???? ????      00399         BANKSEL r0x101D
+00B2   0D??           00400         RLF     r0x101D,F
+00B3   3E01           00401         ADDLW   0x01
+00B4   1C03           00402         BTFSS   STATUS,0
+00B5   2???           00403         GOTO    _00117_DS_
+00B6                  00404 _00118_DS_
+00B6   ???? ????      00405         BANKSEL r0x101D
+00B8   09??           00406         COMF    r0x101D,F
+00B9   05??           00407         ANDWF   r0x1017,F
+00BA   08??           00408         MOVF    r0x1019,W
+00BB   00??           00409         MOVWF   r0x101D
+00BC   08??           00410         MOVF    r0x1018,W
+00BD   3C00           00411         SUBLW   0x00
+00BE   1903           00412         BTFSC   STATUS,2
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE  9
+
+
+LOC    OBJECT CODE    LINE  SOURCE TEXT
+  VALUE
+
+00BF   2???           00413         GOTO    _00120_DS_
+00C0                  00414 _00119_DS_
+00C0   ???? ????      00415         BANKSEL r0x101D
+00C2   0D??           00416         RLF     r0x101D,F
+00C3   3E01           00417         ADDLW   0x01
+00C4   1C03           00418         BTFSS   STATUS,0
+00C5   2???           00419         GOTO    _00119_DS_
+00C6                  00420 _00120_DS_
+00C6   ???? ????      00421         BANKSEL r0x101D
+00C8   08??           00422         MOVF    r0x101D,W
+00C9   04??           00423         IORWF   r0x1017,W
+00CA   00??           00424         MOVWF   r0x1018
+00CB   00??           00425         MOVWF   STK02
+00CC   08??           00426         MOVF    r0x101A,W
+00CD   00??           00427         MOVWF   STK01
+00CE   08??           00428         MOVF    r0x101C,W
+00CF   00??           00429         MOVWF   STK00
+00D0   08??           00430         MOVF    r0x101B,W
+00D1   ???? ????      00431         PAGESEL __gptrput1
+00D3   2???           00432         CALL    __gptrput1
+00D4   ???? ????      00433         PAGESEL $
+00D6   0008           00434         RETURN  
+                      00435 ; exit point of _GPIO_Set_Port_pin
+                      00436 
+                      00437 ;***
+                      00438 ;  pBlock Stats: dbName = C
+                      00439 ;***
+                      00440 ;entry:  _GPIO_Init_Port_pin    ;Function start
+                      00441 ; 2 exit points
+                      00442 ;has an exit
+                      00443 ;functions called:
+                      00444 ;   __gptrget1
+                      00445 ;   __gptrput1
+                      00446 ;   __gptrget1
+                      00447 ;   __gptrput1
+                      00448 ;11 compiler assigned registers:
+                      00449 ;   r0x101E
+                      00450 ;   STK00
+                      00451 ;   r0x101F
+                      00452 ;   STK01
+                      00453 ;   r0x1020
+                      00454 ;   r0x1021
+                      00455 ;   r0x1022
+                      00456 ;   r0x1023
+                      00457 ;   r0x1024
+                      00458 ;   r0x1025
+                      00459 ;   STK02
+                      00460 ;; Starting pCode block
+00D7                  00461 _GPIO_Init_Port_pin     ;Function start
+                      00462 ; 2 exit points
+00D7   ???? ????      00463         BANKSEL r0x1021
+00D9   00??           00464         MOVWF   r0x1021
+                      00465 ;       .line   5; "GPIO.c"     void GPIO_Init_Port_pin(tPort Port , unsigned char pin , tPortDir direct
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE 10
+
+
+LOC    OBJECT CODE    LINE  SOURCE TEXT
+  VALUE
+
+                            ion )
+00DA   00??           00466         MOVWF   r0x101E
+00DB   08??           00467         MOVF    STK00,W
+00DC   00??           00468         MOVWF   r0x101F
+00DD   08??           00469         MOVF    STK01,W
+00DE   00??           00470         MOVWF   r0x1020
+                      00471 ;;108   MOVF    r0x101E,W
+                      00472 ;       .line   7; "GPIO.c"     REG_SET_BIT( (Port + Direction_REG_OFFSIT),pin , direction) ;
+00DF   01??           00473         CLRF    r0x1022
+00E0   3080           00474         MOVLW   0x80
+00E1   07??           00475         ADDWF   r0x1021,W
+00E2   00??           00476         MOVWF   r0x1021
+00E3   00??           00477         MOVWF   r0x101E
+00E4   01??           00478         CLRF    r0x1023
+00E5   0D??           00479         RLF     r0x1023,F
+00E6   3000           00480         MOVLW   0x00
+00E7   07??           00481         ADDWF   r0x1023,F
+                      00482 ;;102   MOVF    r0x1023,W
+                      00483 ;;100   MOVF    r0x101E,W
+00E8   01??           00484         CLRF    r0x1024
+00E9   08??           00485         MOVF    r0x1021,W
+00EA   00??           00486         MOVWF   STK01
+                      00487 ;;101   MOVF    r0x1022,W
+00EB   08??           00488         MOVF    r0x1023,W
+00EC   00??           00489         MOVWF   r0x1022
+00ED   00??           00490         MOVWF   STK00
+00EE   3000           00491         MOVLW   0x00
+00EF   ???? ????      00492         PAGESEL __gptrget1
+00F1   2???           00493         CALL    __gptrget1
+00F2   ???? ????      00494         PAGESEL $
+00F4   ???? ????      00495         BANKSEL r0x101E
+00F6   00??           00496         MOVWF   r0x101E
+00F7   3001           00497         MOVLW   0x01
+00F8   00??           00498         MOVWF   r0x1025
+00F9   08??           00499         MOVF    r0x101F,W
+00FA   3C00           00500         SUBLW   0x00
+00FB   1903           00501         BTFSC   STATUS,2
+00FC   2???           00502         GOTO    _00108_DS_
+00FD                  00503 _00107_DS_
+00FD   ???? ????      00504         BANKSEL r0x1025
+00FF   0D??           00505         RLF     r0x1025,F
+0100   3E01           00506         ADDLW   0x01
+0101   1C03           00507         BTFSS   STATUS,0
+0102   2???           00508         GOTO    _00107_DS_
+0103                  00509 _00108_DS_
+0103   ???? ????      00510         BANKSEL r0x1025
+0105   09??           00511         COMF    r0x1025,F
+0106   05??           00512         ANDWF   r0x101E,F
+0107   08??           00513         MOVF    r0x1020,W
+0108   00??           00514         MOVWF   r0x1025
+0109   08??           00515         MOVF    r0x101F,W
+010A   3C00           00516         SUBLW   0x00
+010B   1903           00517         BTFSC   STATUS,2
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE 11
+
+
+LOC    OBJECT CODE    LINE  SOURCE TEXT
+  VALUE
+
+010C   2???           00518         GOTO    _00110_DS_
+010D                  00519 _00109_DS_
+010D   ???? ????      00520         BANKSEL r0x1025
+010F   0D??           00521         RLF     r0x1025,F
+0110   3E01           00522         ADDLW   0x01
+0111   1C03           00523         BTFSS   STATUS,0
+0112   2???           00524         GOTO    _00109_DS_
+0113                  00525 _00110_DS_
+0113   ???? ????      00526         BANKSEL r0x1025
+0115   08??           00527         MOVF    r0x1025,W
+0116   04??           00528         IORWF   r0x101E,W
+0117   00??           00529         MOVWF   r0x101F
+0118   00??           00530         MOVWF   STK02
+0119   08??           00531         MOVF    r0x1021,W
+011A   00??           00532         MOVWF   STK01
+011B   08??           00533         MOVF    r0x1022,W
+011C   00??           00534         MOVWF   STK00
+011D   08??           00535         MOVF    r0x1024,W
+011E   ???? ????      00536         PAGESEL __gptrput1
+0120   2???           00537         CALL    __gptrput1
+0121   ???? ????      00538         PAGESEL $
+0123   0008           00539         RETURN  
+                      00540 ; exit point of _GPIO_Init_Port_pin
+                      00541 
+                      00542 
+                      00543 ;       code size estimation:
+                      00544 ;         210+   41 =   251 instructions (  584 byte)
+                      00545 
+                      00546         end
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE 12
+
+
+SYMBOL TABLE
+  LABEL                             VALUE
+
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ADCON0                            0000001F
+ADCON1                            0000009F
+ADCS0                             00000006
+ADCS1                             00000007
+ADCS2                             00000006
+ADDEN                             00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADRESH                            0000001E
+ADRESL                            0000009E
+BCLIE                             00000003
+BCLIF                             00000003
+BF                                00000000
+BRGH                              00000002
+C                                 00000000
+C1INV                             00000004
+C1OUT                             00000006
+C2INV                             00000005
+C2OUT                             00000007
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCP2CON                           0000001D
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2X                             00000005
+CCP2Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+CCPR2                             0000001B
+CCPR2H                            0000001C
+CCPR2L                            0000001B
+CHS0                              00000003
+CHS1                              00000004
+CHS2                              00000005
+CIS                               00000003
+CKE                               00000006
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE 13
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CKP                               00000004
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+CMCON                             0000009C
+CMIE                              00000006
+CMIF                              00000006
+CREN                              00000004
+CSRC                              00000007
+CVR0                              00000000
+CVR1                              00000001
+CVR2                              00000002
+CVR3                              00000003
+CVRCON                            0000009D
+CVREN                             00000007
+CVROE                             00000006
+CVRR                              00000005
+D                                 00000005
+DATA_ADDRESS                      00000005
+DC                                00000001
+D_A                               00000005
+D_NOT_A                           00000005
+EEADR                             0000010D
+EEADRH                            0000010F
+EECON1                            0000018C
+EECON2                            0000018D
+EEDATA                            0000010C
+EEDATH                            0000010E
+EEIE                              00000004
+EEIF                              00000004
+EEPGD                             00000007
+F                                 00000001
+FERR                              00000002
+FSR                               00000004
+GCEN                              00000007
+GIE                               00000007
+GO                                00000002
+GO_DONE                           00000002
+GO_NOT_DONE                       00000002
+I2C_DATA                          00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+IBF                               00000007
+IBOV                              00000005
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE 14
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+NOT_BO                            00000000
+NOT_BOR                           00000000
+NOT_DONE                          00000002
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RC8                           00000006
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+NOT_TX8                           00000006
+NOT_W                             00000002
+NOT_WRITE                         00000002
+OBF                               00000006
+OERR                              00000001
+OPTION_REG                        00000081
+P                                 00000004
+PCFG0                             00000000
+PCFG1                             00000001
+PCFG2                             00000002
+PCFG3                             00000003
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PEN                               00000002
+PIE1                              0000008C
+PIE2                              0000008D
+PIR1                              0000000C
+PIR2                              0000000D
+PORTA                             00000005
+PORTB                             00000006
+PORTC                             00000007
+PORTD                             00000008
+PORTE                             00000009
+PR2                               00000092
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+PSAVE                             00000000
+PSPIE                             00000007
+PSPIF                             00000007
+PSPMODE                           00000004
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE 15
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC3                               00000003
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+RC7                               00000007
+RC8_9                             00000006
+RC9                               00000006
+RCD8                              00000000
+RCEN                              00000003
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+RD5                               00000005
+RD6                               00000006
+RD7                               00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+READ_WRITE                        00000002
+RP0                               00000005
+RP1                               00000006
+RSEN                              00000001
+RX9                               00000006
+RX9D                              00000000
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SEN                               00000000
+SMP                               00000007
+SPBRG                             00000099
+SPEN                              00000007
+SREN                              00000005
+SSAVE                             00000000
+SSPADD                            00000093
+SSPBUF                            00000013
+SSPCON                            00000014
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE 16
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SSPCON2                           00000091
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPOV                             00000006
+SSPSTAT                           00000094
+STATUS                            00000003
+STK00                             00000000
+STK01                             00000000
+STK02                             00000000
+STK03                             00000000
+STK04                             00000000
+STK05                             00000000
+STK06                             00000000
+STK07                             00000000
+STK08                             00000000
+STK09                             00000000
+STK10                             00000000
+STK11                             00000000
+STK12                             00000000
+SYNC                              00000004
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1INSYNC                          00000002
+T1OSCEN                           00000003
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOUTPS0                           00000003
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE 17
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000087
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+TRISC4                            00000004
+TRISC5                            00000005
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000088
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000089
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+TRMT                              00000001
+TX8_9                             00000006
+TX9                               00000006
+TX9D                              00000000
+TXD8                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+UA                                00000001
+W                                 00000000
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE 18
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+WCOL                              00000007
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+WSAVE                             00000000
+Z                                 00000002
+_00107_DS_                        000000FD
+_00108_DS_                        00000103
+_00109_DS_                        0000010D
+_00110_DS_                        00000113
+_00117_DS_                        000000B0
+_00118_DS_                        000000B6
+_00119_DS_                        000000C0
+_00120_DS_                        000000C6
+_00128_DS_                        00000081
+_00130_DS_                        00000093
+_00141_DS_                        0000002A
+_00142_DS_                        00000031
+_00143_DS_                        00000041
+_00144_DS_                        0000004B
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_BOREN_OFF                        00003FBF
+_BOREN_ON                         00003FFF
+_CONFIG                           00002007
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+_CP_ALL                           00001FFF
+_CP_OFF                           00003FFF
+_CP_ON                            00001FFF
+_DEBUG_OFF                        00003FFF
+_DEBUG_ON                         000037FF
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_GPIO_Get_Port                    00000000
+_GPIO_Get_Port_Pin                0000000F
+_GPIO_Init_Port                   0000005F
+_GPIO_Init_Port_pin               000000D7
+_GPIO_Set_Port                    00000050
+_GPIO_Set_Port_pin                00000094
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_LVP_OFF                          00003F7F
+_LVP_ON                           00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE 19
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_WRT_1FOURTH                      00003BFF
+_WRT_256                          00003DFF
+_WRT_HALF                         000039FF
+_WRT_OFF                          00003FFF
+_XT_OSC                           00003FFD
+__16F877A                         00000001
+__CODE_END                        00001FFF
+__CODE_START                      00000000
+__COMMON_RAM_END                  0000007F
+__COMMON_RAM_START                00000070
+__EEPROM_END                      000021FF
+__EEPROM_START                    00002100
+__VECTOR_INT                      00000004
+__VECTOR_RESET                    00000000
+__gptrget1                        00000000
+__gptrput1                        00000000
+_code_GPIO_0009                   00000009
+_code_GPIO_001D                   0000001D
+_code_GPIO_005C                   0000005C
+_code_GPIO_007E                   0000007E
+_code_GPIO_0091                   00000091
+_code_GPIO_00A5                   000000A5
+_code_GPIO_00D4                   000000D4
+_code_GPIO_00F2                   000000F2
+_code_GPIO_0121                   00000121
+r0x1000                           0000001C
+r0x1004                           00000016
+r0x1005                           00000017
+r0x1006                           00000018
+r0x1008                           00000019
+r0x1009                           0000001A
+r0x100A                           0000001B
+r0x100E                           00000015
+r0x1011                           0000000F
+r0x1012                           00000010
+r0x1013                           00000011
+r0x1014                           00000012
+r0x1015                           00000013
+r0x1016                           00000014
+r0x1017                           00000008
+r0x1018                           00000009
+r0x1019                           0000000A
+r0x101A                           0000000B
+r0x101B                           0000000D
+r0x101C                           0000000C
+r0x101D                           0000000E
+r0x101E                           00000000
+r0x101F                           00000001
+gpasm-1.4.0 #1106 (Oct  6 2014) obj\Release\G   6-30-2020  22:58:10         PAGE 20
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+r0x1020                           00000002
+r0x1021                           00000003
+r0x1022                           00000004
+r0x1023                           00000005
+r0x1024                           00000006
+r0x1025                           00000007
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

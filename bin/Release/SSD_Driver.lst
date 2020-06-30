@@ -1,0 +1,2034 @@
+gplink-1.4.0 #1106 (Oct  6 2014)
+Copyright (c) 1998-2014 gputils project
+Listing File Generated: 6-30-2020  22:58:10
+ 
+ 
+Address  Value    Disassembly              Source
+-------  -----    -----------              ------
+                                           ;--------------------------------------------------------
+                                           ; File Created by SDCC : free open source ANSI-C Compiler
+                                           ; Version 3.5.0 #9253 (Jun 20 2015) (MINGW32)
+                                           ; This file was generated Tue Jun 30 22:58:10 2020
+                                           ;--------------------------------------------------------
+                                           ; PIC port for the 14-bit core
+                                           ;--------------------------------------------------------
+                                           ;	.file	"GPIO.c"
+                                           	list	p=16f877a
+                                           	radix dec
+                                           	include "p16f877a.inc"
+                                                   LIST
+                                           
+                                           ;==========================================================================
+                                           ; Build date : Aug 07 2014
+                                           ;  MPASM PIC16F877A processor include
+                                           ; 
+                                           ;  (c) Copyright 1999-2014 Microchip Technology, All rights reserved
+                                           ;==========================================================================
+                                           
+                                                   NOLIST
+                                           ;--------------------------------------------------------
+                                           ; external declarations
+                                           ;--------------------------------------------------------
+                                           	extern	__gptrget1
+                                           	extern	__gptrput1
+                                           
+                                           	extern PSAVE
+                                           	extern SSAVE
+                                           	extern WSAVE
+                                           	extern STK12
+                                           	extern STK11
+                                           	extern STK10
+                                           	extern STK09
+                                           	extern STK08
+                                           	extern STK07
+                                           	extern STK06
+                                           	extern STK05
+                                           	extern STK04
+                                           	extern STK03
+                                           	extern STK02
+                                           	extern STK01
+                                           	extern STK00
+                                           ;--------------------------------------------------------
+                                           ; global declarations
+                                           ;--------------------------------------------------------
+                                           	global	_GPIO_Get_Port
+                                           	global	_GPIO_Get_Port_Pin
+                                           	global	_GPIO_Set_Port
+                                           	global	_GPIO_Init_Port
+                                           	global	_GPIO_Set_Port_pin
+                                           	global	_GPIO_Init_Port_pin
+                                           
+                                           ;--------------------------------------------------------
+                                           ; global definitions
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; absolute symbol definitions
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; compiler-defined variables
+                                           ;--------------------------------------------------------
+                                           UDL_GPIO_0	udata
+                                           r0x101E	res	1
+                                           r0x101F	res	1
+                                           r0x1020	res	1
+                                           r0x1021	res	1
+                                           r0x1022	res	1
+                                           r0x1023	res	1
+                                           r0x1024	res	1
+                                           r0x1025	res	1
+                                           r0x1017	res	1
+                                           r0x1018	res	1
+                                           r0x1019	res	1
+                                           r0x101A	res	1
+                                           r0x101C	res	1
+                                           r0x101B	res	1
+                                           r0x101D	res	1
+                                           r0x1011	res	1
+                                           r0x1012	res	1
+                                           r0x1013	res	1
+                                           r0x1014	res	1
+                                           r0x1015	res	1
+                                           r0x1016	res	1
+                                           r0x100E	res	1
+                                           r0x1004	res	1
+                                           r0x1005	res	1
+                                           r0x1006	res	1
+                                           r0x1008	res	1
+                                           r0x1009	res	1
+                                           r0x100A	res	1
+                                           r0x1000	res	1
+                                           ;--------------------------------------------------------
+                                           ; initialized data
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; overlayable items in internal ram 
+                                           ;--------------------------------------------------------
+                                           ;	udata_ovr
+                                           ;--------------------------------------------------------
+                                           ; code
+                                           ;--------------------------------------------------------
+                                           code_GPIO	code
+                                           ;***
+                                           ;  pBlock Stats: dbName = C
+                                           ;***
+                                           ;entry:  _GPIO_Get_Port	;Function start
+                                           ; 2 exit points
+                                           ;has an exit
+                                           ;functions called:
+                                           ;   __gptrget1
+                                           ;   __gptrget1
+                                           ;6 compiler assigned registers:
+                                           ;   r0x1000
+                                           ;   r0x1001
+                                           ;   r0x1002
+                                           ;   STK01
+                                           ;   r0x1003
+                                           ;   STK00
+                                           ;; Starting pCode block
+                                           _GPIO_Get_Port	;Function start
+                                           ; 2 exit points
+                                           ;	.line	40; "GPIO.c"	unsigned char GPIO_Get_Port(tPort Port)
+00023e   1283     bcf     0x03, 0x5        	BANKSEL	r0x1000
+00023f   1303     bcf     0x03, 0x6        
+000240   00bc     movwf   0x3c             	MOVWF	r0x1000
+                                           ;;1	MOVWF	r0x1001
+                                           ;	.line	44; "GPIO.c"	return *temp ;
+000241   00fe     movwf   0x7e             	MOVWF	STK01
+                                           ;;1	MOVF	r0x1003,W
+000242   00ff     movwf   0x7f             	MOVWF	STK00
+000243   3000     movlw   0x00             	MOVLW	0x00
+000244   118a     bcf     0x0a, 0x3        	PAGESEL	__gptrget1
+000245   120a     bcf     0x0a, 0x4        
+000246   249c     call    0x049c           	CALL	__gptrget1
+000247   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000248   120a     bcf     0x0a, 0x4        
+000249   1283     bcf     0x03, 0x5        	BANKSEL	r0x1000
+00024a   1303     bcf     0x03, 0x6        
+00024b   00bc     movwf   0x3c             	MOVWF	r0x1000
+00024c   0008     return                   	RETURN	
+                                           ; exit point of _GPIO_Get_Port
+                                           
+                                           ;***
+                                           ;  pBlock Stats: dbName = C
+                                           ;***
+                                           ;entry:  _GPIO_Get_Port_Pin	;Function start
+                                           ; 2 exit points
+                                           ;has an exit
+                                           ;functions called:
+                                           ;   __gptrget1
+                                           ;   __gptrget1
+                                           ;10 compiler assigned registers:
+                                           ;   r0x1004
+                                           ;   STK00
+                                           ;   r0x1005
+                                           ;   r0x1006
+                                           ;   r0x1007
+                                           ;   STK01
+                                           ;   r0x1008
+                                           ;   r0x1009
+                                           ;   r0x100A
+                                           ;   r0x100B
+                                           ;; Starting pCode block
+                                           _GPIO_Get_Port_Pin	;Function start
+                                           ; 2 exit points
+                                           ;	.line	35; "GPIO.c"	unsigned char GPIO_Get_Port_Pin(tPort Port , unsigned char pin )
+00024d   1283     bcf     0x03, 0x5        	BANKSEL	r0x1004
+00024e   1303     bcf     0x03, 0x6        
+00024f   00b6     movwf   0x36             	MOVWF	r0x1004
+000250   087f     movf    0x7f, 0x0        	MOVF	STK00,W
+000251   00b7     movwf   0x37             	MOVWF	r0x1005
+                                           ;;107	MOVF	r0x1004,W
+                                           ;;1	CLRF	r0x1007
+                                           ;;106	MOVF	r0x1006,W
+                                           ;	.line	37; "GPIO.c"	return REG_GET_BIT(Port,pin) ;
+000252   0836     movf    0x36, 0x0        	MOVF	r0x1004,W
+000253   00b8     movwf   0x38             	MOVWF	r0x1006
+000254   00fe     movwf   0x7e             	MOVWF	STK01
+000255   0839     movf    0x39, 0x0        	MOVF	r0x1008,W
+000256   00ff     movwf   0x7f             	MOVWF	STK00
+000257   3000     movlw   0x00             	MOVLW	0x00
+000258   118a     bcf     0x0a, 0x3        	PAGESEL	__gptrget1
+000259   120a     bcf     0x0a, 0x4        
+00025a   249c     call    0x049c           	CALL	__gptrget1
+00025b   118a     bcf     0x0a, 0x3        	PAGESEL	$
+00025c   120a     bcf     0x0a, 0x4        
+00025d   1283     bcf     0x03, 0x5        	BANKSEL	r0x1004
+00025e   1303     bcf     0x03, 0x6        
+00025f   00b6     movwf   0x36             	MOVWF	r0x1004
+000260   3000     movlw   0x00             	MOVLW	0x00
+000261   00b9     movwf   0x39             	MOVWF	r0x1008
+000262   3001     movlw   0x01             	MOVLW	0x01
+000263   00b8     movwf   0x38             	MOVWF	r0x1006
+000264   0837     movf    0x37, 0x0        	MOVF	r0x1005,W
+000265   3c00     sublw   0x00             	SUBLW	0x00
+000266   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+000267   2a6f     goto    0x026f           	GOTO	_00142_DS_
+                                           _00141_DS_
+000268   1283     bcf     0x03, 0x5        	BANKSEL	r0x1006
+000269   1303     bcf     0x03, 0x6        
+00026a   0db8     rlf     0x38, 0x1        	RLF	r0x1006,F
+00026b   0db9     rlf     0x39, 0x1        	RLF	r0x1008,F
+00026c   3e01     addlw   0x01             	ADDLW	0x01
+00026d   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
+00026e   2a68     goto    0x0268           	GOTO	_00141_DS_
+                                           _00142_DS_
+00026f   1283     bcf     0x03, 0x5        	BANKSEL	r0x1004
+000270   1303     bcf     0x03, 0x6        
+000271   0836     movf    0x36, 0x0        	MOVF	r0x1004,W
+000272   00ba     movwf   0x3a             	MOVWF	r0x1009
+000273   01bb     clrf    0x3b             	CLRF	r0x100A
+000274   0838     movf    0x38, 0x0        	MOVF	r0x1006,W
+000275   053a     andwf   0x3a, 0x0        	ANDWF	r0x1009,W
+000276   00b8     movwf   0x38             	MOVWF	r0x1006
+000277   00b6     movwf   0x36             	MOVWF	r0x1004
+000278   0839     movf    0x39, 0x0        	MOVF	r0x1008,W
+000279   053b     andwf   0x3b, 0x0        	ANDWF	r0x100A,W
+                                           ;;1	MOVWF	r0x100B
+00027a   00b9     movwf   0x39             	MOVWF	r0x1008
+                                           ;;105	MOVF	r0x1004,W
+00027b   0837     movf    0x37, 0x0        	MOVF	r0x1005,W
+00027c   3c00     sublw   0x00             	SUBLW	0x00
+00027d   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+00027e   2a89     goto    0x0289           	GOTO	_00144_DS_
+                                           _00143_DS_
+00027f   1003     bcf     0x03, 0x0        	BCF	STATUS,0
+000280   1283     bcf     0x03, 0x5        	BANKSEL	r0x1008
+000281   1303     bcf     0x03, 0x6        
+000282   1bb9     btfsc   0x39, 0x7        	BTFSC	r0x1008,7
+000283   1403     bsf     0x03, 0x0        	BSF	STATUS,0
+000284   0cb9     rrf     0x39, 0x1        	RRF	r0x1008,F
+000285   0cb8     rrf     0x38, 0x1        	RRF	r0x1006,F
+000286   3e01     addlw   0x01             	ADDLW	0x01
+000287   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
+000288   2a7f     goto    0x027f           	GOTO	_00143_DS_
+                                           _00144_DS_
+000289   1283     bcf     0x03, 0x5        	BANKSEL	r0x1006
+00028a   1303     bcf     0x03, 0x6        
+00028b   0838     movf    0x38, 0x0        	MOVF	r0x1006,W
+00028c   00b7     movwf   0x37             	MOVWF	r0x1005
+00028d   0008     return                   	RETURN	
+                                           ; exit point of _GPIO_Get_Port_Pin
+                                           
+                                           ;***
+                                           ;  pBlock Stats: dbName = C
+                                           ;***
+                                           ;entry:  _GPIO_Set_Port	;Function start
+                                           ; 2 exit points
+                                           ;has an exit
+                                           ;functions called:
+                                           ;   __gptrput1
+                                           ;   __gptrput1
+                                           ;8 compiler assigned registers:
+                                           ;   r0x100C
+                                           ;   STK00
+                                           ;   r0x100D
+                                           ;   r0x100E
+                                           ;   r0x100F
+                                           ;   STK02
+                                           ;   STK01
+                                           ;   r0x1010
+                                           ;; Starting pCode block
+                                           _GPIO_Set_Port	;Function start
+                                           ; 2 exit points
+00028e   1283     bcf     0x03, 0x5        	BANKSEL	r0x100E
+00028f   1303     bcf     0x03, 0x6        
+000290   00b5     movwf   0x35             	MOVWF	r0x100E
+                                           ;;1	MOVWF	r0x100C
+                                           ;	.line	29; "GPIO.c"	void GPIO_Set_Port(tPort Port , unsigned char data)
+000291   087f     movf    0x7f, 0x0        	MOVF	STK00,W
+                                           ;;1	MOVWF	r0x100D
+                                           ;	.line	32; "GPIO.c"	*temp = data ;
+000292   00fd     movwf   0x7d             	MOVWF	STK02
+000293   0835     movf    0x35, 0x0        	MOVF	r0x100E,W
+000294   00fe     movwf   0x7e             	MOVWF	STK01
+                                           ;;1	MOVF	r0x1010,W
+000295   00ff     movwf   0x7f             	MOVWF	STK00
+000296   3000     movlw   0x00             	MOVLW	0x00
+000297   118a     bcf     0x0a, 0x3        	PAGESEL	__gptrput1
+000298   120a     bcf     0x0a, 0x4        
+000299   2490     call    0x0490           	CALL	__gptrput1
+00029a   118a     bcf     0x0a, 0x3        	PAGESEL	$
+00029b   120a     bcf     0x0a, 0x4        
+00029c   0008     return                   	RETURN	
+                                           ; exit point of _GPIO_Set_Port
+                                           
+                                           ;***
+                                           ;  pBlock Stats: dbName = C
+                                           ;***
+                                           ;entry:  _GPIO_Init_Port	;Function start
+                                           ; 2 exit points
+                                           ;has an exit
+                                           ;functions called:
+                                           ;   __gptrput1
+                                           ;   __gptrput1
+                                           ;   __gptrput1
+                                           ;   __gptrput1
+                                           ;9 compiler assigned registers:
+                                           ;   r0x1011
+                                           ;   STK00
+                                           ;   r0x1012
+                                           ;   r0x1013
+                                           ;   r0x1014
+                                           ;   r0x1015
+                                           ;   r0x1016
+                                           ;   STK02
+                                           ;   STK01
+                                           ;; Starting pCode block
+                                           _GPIO_Init_Port	;Function start
+                                           ; 2 exit points
+00029d   1283     bcf     0x03, 0x5        	BANKSEL	r0x1013
+00029e   1303     bcf     0x03, 0x6        
+00029f   00b1     movwf   0x31             	MOVWF	r0x1013
+                                           ;	.line	17; "GPIO.c"	void GPIO_Init_Port(tPort Port , tPortDir direction )
+0002a0   00af     movwf   0x2f             	MOVWF	r0x1011
+0002a1   087f     movf    0x7f, 0x0        	MOVF	STK00,W
+0002a2   00b0     movwf   0x30             	MOVWF	r0x1012
+                                           ;;109	MOVF	r0x1011,W
+                                           ;	.line	19; "GPIO.c"	volatile unsigned char * temp = (unsigned char*)(Port + Direction_REG_OFFSIT);
+0002a3   01b2     clrf    0x32             	CLRF	r0x1014
+0002a4   3080     movlw   0x80             	MOVLW	0x80
+0002a5   0731     addwf   0x31, 0x0        	ADDWF	r0x1013,W
+0002a6   00b1     movwf   0x31             	MOVWF	r0x1013
+0002a7   00af     movwf   0x2f             	MOVWF	r0x1011
+0002a8   01b3     clrf    0x33             	CLRF	r0x1015
+0002a9   0db3     rlf     0x33, 0x1        	RLF	r0x1015,F
+0002aa   3000     movlw   0x00             	MOVLW	0x00
+0002ab   07b3     addwf   0x33, 0x1        	ADDWF	r0x1015,F
+0002ac   0833     movf    0x33, 0x0        	MOVF	r0x1015,W
+0002ad   00b2     movwf   0x32             	MOVWF	r0x1014
+                                           ;;104	MOVF	r0x1011,W
+0002ae   01b4     clrf    0x34             	CLRF	r0x1016
+                                           ;	.line	20; "GPIO.c"	if(direction == OUT){
+0002af   0830     movf    0x30, 0x0        	MOVF	r0x1012,W
+0002b0   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0002b1   2abf     goto    0x02bf           	GOTO	_00128_DS_
+                                           ;	.line	21; "GPIO.c"	*temp = 0b00000000 ;
+0002b2   3000     movlw   0x00             	MOVLW	0x00
+0002b3   00fd     movwf   0x7d             	MOVWF	STK02
+0002b4   0831     movf    0x31, 0x0        	MOVF	r0x1013,W
+0002b5   00fe     movwf   0x7e             	MOVWF	STK01
+0002b6   0832     movf    0x32, 0x0        	MOVF	r0x1014,W
+0002b7   00ff     movwf   0x7f             	MOVWF	STK00
+0002b8   0834     movf    0x34, 0x0        	MOVF	r0x1016,W
+0002b9   118a     bcf     0x0a, 0x3        	PAGESEL	__gptrput1
+0002ba   120a     bcf     0x0a, 0x4        
+0002bb   2490     call    0x0490           	CALL	__gptrput1
+0002bc   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0002bd   120a     bcf     0x0a, 0x4        
+0002be   2ad1     goto    0x02d1           	GOTO	_00130_DS_
+                                           _00128_DS_
+                                           ;	.line	23; "GPIO.c"	}else if(direction == IN ){
+0002bf   1283     bcf     0x03, 0x5        	BANKSEL	r0x1012
+0002c0   1303     bcf     0x03, 0x6        
+0002c1   0830     movf    0x30, 0x0        	MOVF	r0x1012,W
+0002c2   3a01     xorlw   0x01             	XORLW	0x01
+0002c3   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0002c4   2ad1     goto    0x02d1           	GOTO	_00130_DS_
+                                           ;	.line	24; "GPIO.c"	*temp = 0b11111111 ;
+0002c5   30ff     movlw   0xff             	MOVLW	0xff
+0002c6   00fd     movwf   0x7d             	MOVWF	STK02
+0002c7   0831     movf    0x31, 0x0        	MOVF	r0x1013,W
+0002c8   00fe     movwf   0x7e             	MOVWF	STK01
+0002c9   0832     movf    0x32, 0x0        	MOVF	r0x1014,W
+0002ca   00ff     movwf   0x7f             	MOVWF	STK00
+0002cb   0834     movf    0x34, 0x0        	MOVF	r0x1016,W
+0002cc   118a     bcf     0x0a, 0x3        	PAGESEL	__gptrput1
+0002cd   120a     bcf     0x0a, 0x4        
+0002ce   2490     call    0x0490           	CALL	__gptrput1
+0002cf   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0002d0   120a     bcf     0x0a, 0x4        
+                                           _00130_DS_
+0002d1   0008     return                   	RETURN	
+                                           ; exit point of _GPIO_Init_Port
+                                           
+                                           ;***
+                                           ;  pBlock Stats: dbName = C
+                                           ;***
+                                           ;entry:  _GPIO_Set_Port_pin	;Function start
+                                           ; 2 exit points
+                                           ;has an exit
+                                           ;functions called:
+                                           ;   __gptrget1
+                                           ;   __gptrput1
+                                           ;   __gptrget1
+                                           ;   __gptrput1
+                                           ;10 compiler assigned registers:
+                                           ;   r0x1017
+                                           ;   STK00
+                                           ;   r0x1018
+                                           ;   STK01
+                                           ;   r0x1019
+                                           ;   r0x101A
+                                           ;   r0x101B
+                                           ;   r0x101C
+                                           ;   r0x101D
+                                           ;   STK02
+                                           ;; Starting pCode block
+                                           _GPIO_Set_Port_pin	;Function start
+                                           ; 2 exit points
+0002d2   1283     bcf     0x03, 0x5        	BANKSEL	r0x101A
+0002d3   1303     bcf     0x03, 0x6        
+0002d4   00ab     movwf   0x2b             	MOVWF	r0x101A
+                                           ;	.line	11; "GPIO.c"	void GPIO_Set_Port_pin(tPort Port , unsigned char pin , unsigned char data)
+0002d5   00a8     movwf   0x28             	MOVWF	r0x1017
+0002d6   087f     movf    0x7f, 0x0        	MOVF	STK00,W
+0002d7   00a9     movwf   0x29             	MOVWF	r0x1018
+0002d8   087e     movf    0x7e, 0x0        	MOVF	STK01,W
+0002d9   00aa     movwf   0x2a             	MOVWF	r0x1019
+                                           ;;103	MOVF	r0x1017,W
+                                           ;	.line	13; "GPIO.c"	REG_SET_BIT(Port, pin ,data);
+0002da   01ad     clrf    0x2d             	CLRF	r0x101B
+0002db   082b     movf    0x2b, 0x0        	MOVF	r0x101A,W
+0002dc   00fe     movwf   0x7e             	MOVWF	STK01
+0002dd   082c     movf    0x2c, 0x0        	MOVF	r0x101C,W
+0002de   00ff     movwf   0x7f             	MOVWF	STK00
+0002df   3000     movlw   0x00             	MOVLW	0x00
+0002e0   118a     bcf     0x0a, 0x3        	PAGESEL	__gptrget1
+0002e1   120a     bcf     0x0a, 0x4        
+0002e2   249c     call    0x049c           	CALL	__gptrget1
+0002e3   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0002e4   120a     bcf     0x0a, 0x4        
+0002e5   1283     bcf     0x03, 0x5        	BANKSEL	r0x1017
+0002e6   1303     bcf     0x03, 0x6        
+0002e7   00a8     movwf   0x28             	MOVWF	r0x1017
+0002e8   3001     movlw   0x01             	MOVLW	0x01
+0002e9   00ae     movwf   0x2e             	MOVWF	r0x101D
+0002ea   0829     movf    0x29, 0x0        	MOVF	r0x1018,W
+0002eb   3c00     sublw   0x00             	SUBLW	0x00
+0002ec   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+0002ed   2af4     goto    0x02f4           	GOTO	_00118_DS_
+                                           _00117_DS_
+0002ee   1283     bcf     0x03, 0x5        	BANKSEL	r0x101D
+0002ef   1303     bcf     0x03, 0x6        
+0002f0   0dae     rlf     0x2e, 0x1        	RLF	r0x101D,F
+0002f1   3e01     addlw   0x01             	ADDLW	0x01
+0002f2   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
+0002f3   2aee     goto    0x02ee           	GOTO	_00117_DS_
+                                           _00118_DS_
+0002f4   1283     bcf     0x03, 0x5        	BANKSEL	r0x101D
+0002f5   1303     bcf     0x03, 0x6        
+0002f6   09ae     comf    0x2e, 0x1        	COMF	r0x101D,F
+0002f7   05a8     andwf   0x28, 0x1        	ANDWF	r0x1017,F
+0002f8   082a     movf    0x2a, 0x0        	MOVF	r0x1019,W
+0002f9   00ae     movwf   0x2e             	MOVWF	r0x101D
+0002fa   0829     movf    0x29, 0x0        	MOVF	r0x1018,W
+0002fb   3c00     sublw   0x00             	SUBLW	0x00
+0002fc   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+0002fd   2b04     goto    0x0304           	GOTO	_00120_DS_
+                                           _00119_DS_
+0002fe   1283     bcf     0x03, 0x5        	BANKSEL	r0x101D
+0002ff   1303     bcf     0x03, 0x6        
+000300   0dae     rlf     0x2e, 0x1        	RLF	r0x101D,F
+000301   3e01     addlw   0x01             	ADDLW	0x01
+000302   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
+000303   2afe     goto    0x02fe           	GOTO	_00119_DS_
+                                           _00120_DS_
+000304   1283     bcf     0x03, 0x5        	BANKSEL	r0x101D
+000305   1303     bcf     0x03, 0x6        
+000306   082e     movf    0x2e, 0x0        	MOVF	r0x101D,W
+000307   0428     iorwf   0x28, 0x0        	IORWF	r0x1017,W
+000308   00a9     movwf   0x29             	MOVWF	r0x1018
+000309   00fd     movwf   0x7d             	MOVWF	STK02
+00030a   082b     movf    0x2b, 0x0        	MOVF	r0x101A,W
+00030b   00fe     movwf   0x7e             	MOVWF	STK01
+00030c   082c     movf    0x2c, 0x0        	MOVF	r0x101C,W
+00030d   00ff     movwf   0x7f             	MOVWF	STK00
+00030e   082d     movf    0x2d, 0x0        	MOVF	r0x101B,W
+00030f   118a     bcf     0x0a, 0x3        	PAGESEL	__gptrput1
+000310   120a     bcf     0x0a, 0x4        
+000311   2490     call    0x0490           	CALL	__gptrput1
+000312   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000313   120a     bcf     0x0a, 0x4        
+000314   0008     return                   	RETURN	
+                                           ; exit point of _GPIO_Set_Port_pin
+                                           
+                                           ;***
+                                           ;  pBlock Stats: dbName = C
+                                           ;***
+                                           ;entry:  _GPIO_Init_Port_pin	;Function start
+                                           ; 2 exit points
+                                           ;has an exit
+                                           ;functions called:
+                                           ;   __gptrget1
+                                           ;   __gptrput1
+                                           ;   __gptrget1
+                                           ;   __gptrput1
+                                           ;11 compiler assigned registers:
+                                           ;   r0x101E
+                                           ;   STK00
+                                           ;   r0x101F
+                                           ;   STK01
+                                           ;   r0x1020
+                                           ;   r0x1021
+                                           ;   r0x1022
+                                           ;   r0x1023
+                                           ;   r0x1024
+                                           ;   r0x1025
+                                           ;   STK02
+                                           ;; Starting pCode block
+                                           _GPIO_Init_Port_pin	;Function start
+                                           ; 2 exit points
+000315   1283     bcf     0x03, 0x5        	BANKSEL	r0x1021
+000316   1303     bcf     0x03, 0x6        
+000317   00a3     movwf   0x23             	MOVWF	r0x1021
+                                           ;	.line	5; "GPIO.c"	void GPIO_Init_Port_pin(tPort Port , unsigned char pin , tPortDir direction )
+000318   00a0     movwf   0x20             	MOVWF	r0x101E
+000319   087f     movf    0x7f, 0x0        	MOVF	STK00,W
+00031a   00a1     movwf   0x21             	MOVWF	r0x101F
+00031b   087e     movf    0x7e, 0x0        	MOVF	STK01,W
+00031c   00a2     movwf   0x22             	MOVWF	r0x1020
+                                           ;;108	MOVF	r0x101E,W
+                                           ;	.line	7; "GPIO.c"	REG_SET_BIT( (Port + Direction_REG_OFFSIT),pin , direction) ;
+00031d   01a4     clrf    0x24             	CLRF	r0x1022
+00031e   3080     movlw   0x80             	MOVLW	0x80
+00031f   0723     addwf   0x23, 0x0        	ADDWF	r0x1021,W
+000320   00a3     movwf   0x23             	MOVWF	r0x1021
+000321   00a0     movwf   0x20             	MOVWF	r0x101E
+000322   01a5     clrf    0x25             	CLRF	r0x1023
+000323   0da5     rlf     0x25, 0x1        	RLF	r0x1023,F
+000324   3000     movlw   0x00             	MOVLW	0x00
+000325   07a5     addwf   0x25, 0x1        	ADDWF	r0x1023,F
+                                           ;;102	MOVF	r0x1023,W
+                                           ;;100	MOVF	r0x101E,W
+000326   01a6     clrf    0x26             	CLRF	r0x1024
+000327   0823     movf    0x23, 0x0        	MOVF	r0x1021,W
+000328   00fe     movwf   0x7e             	MOVWF	STK01
+                                           ;;101	MOVF	r0x1022,W
+000329   0825     movf    0x25, 0x0        	MOVF	r0x1023,W
+00032a   00a4     movwf   0x24             	MOVWF	r0x1022
+00032b   00ff     movwf   0x7f             	MOVWF	STK00
+00032c   3000     movlw   0x00             	MOVLW	0x00
+00032d   118a     bcf     0x0a, 0x3        	PAGESEL	__gptrget1
+00032e   120a     bcf     0x0a, 0x4        
+00032f   249c     call    0x049c           	CALL	__gptrget1
+000330   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000331   120a     bcf     0x0a, 0x4        
+000332   1283     bcf     0x03, 0x5        	BANKSEL	r0x101E
+000333   1303     bcf     0x03, 0x6        
+000334   00a0     movwf   0x20             	MOVWF	r0x101E
+000335   3001     movlw   0x01             	MOVLW	0x01
+000336   00a7     movwf   0x27             	MOVWF	r0x1025
+000337   0821     movf    0x21, 0x0        	MOVF	r0x101F,W
+000338   3c00     sublw   0x00             	SUBLW	0x00
+000339   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+00033a   2b41     goto    0x0341           	GOTO	_00108_DS_
+                                           _00107_DS_
+00033b   1283     bcf     0x03, 0x5        	BANKSEL	r0x1025
+00033c   1303     bcf     0x03, 0x6        
+00033d   0da7     rlf     0x27, 0x1        	RLF	r0x1025,F
+00033e   3e01     addlw   0x01             	ADDLW	0x01
+00033f   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
+000340   2b3b     goto    0x033b           	GOTO	_00107_DS_
+                                           _00108_DS_
+000341   1283     bcf     0x03, 0x5        	BANKSEL	r0x1025
+000342   1303     bcf     0x03, 0x6        
+000343   09a7     comf    0x27, 0x1        	COMF	r0x1025,F
+000344   05a0     andwf   0x20, 0x1        	ANDWF	r0x101E,F
+000345   0822     movf    0x22, 0x0        	MOVF	r0x1020,W
+000346   00a7     movwf   0x27             	MOVWF	r0x1025
+000347   0821     movf    0x21, 0x0        	MOVF	r0x101F,W
+000348   3c00     sublw   0x00             	SUBLW	0x00
+000349   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+00034a   2b51     goto    0x0351           	GOTO	_00110_DS_
+                                           _00109_DS_
+00034b   1283     bcf     0x03, 0x5        	BANKSEL	r0x1025
+00034c   1303     bcf     0x03, 0x6        
+00034d   0da7     rlf     0x27, 0x1        	RLF	r0x1025,F
+00034e   3e01     addlw   0x01             	ADDLW	0x01
+00034f   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
+000350   2b4b     goto    0x034b           	GOTO	_00109_DS_
+                                           _00110_DS_
+000351   1283     bcf     0x03, 0x5        	BANKSEL	r0x1025
+000352   1303     bcf     0x03, 0x6        
+000353   0827     movf    0x27, 0x0        	MOVF	r0x1025,W
+000354   0420     iorwf   0x20, 0x0        	IORWF	r0x101E,W
+000355   00a1     movwf   0x21             	MOVWF	r0x101F
+000356   00fd     movwf   0x7d             	MOVWF	STK02
+000357   0823     movf    0x23, 0x0        	MOVF	r0x1021,W
+000358   00fe     movwf   0x7e             	MOVWF	STK01
+000359   0824     movf    0x24, 0x0        	MOVF	r0x1022,W
+00035a   00ff     movwf   0x7f             	MOVWF	STK00
+00035b   0826     movf    0x26, 0x0        	MOVF	r0x1024,W
+00035c   118a     bcf     0x0a, 0x3        	PAGESEL	__gptrput1
+00035d   120a     bcf     0x0a, 0x4        
+00035e   2490     call    0x0490           	CALL	__gptrput1
+00035f   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000360   120a     bcf     0x0a, 0x4        
+000361   0008     return                   	RETURN	
+                                           ; exit point of _GPIO_Init_Port_pin
+                                           
+                                           
+                                           ;	code size estimation:
+                                           ;	  210+   41 =   251 instructions (  584 byte)
+                                           
+                                           	end
+                                           ;--------------------------------------------------------
+                                           ; File Created by SDCC : free open source ANSI-C Compiler
+                                           ; Version 3.5.0 #9253 (Jun 20 2015) (MINGW32)
+                                           ; This file was generated Tue Jun 30 22:58:10 2020
+                                           ;--------------------------------------------------------
+                                           ; PIC port for the 14-bit core
+                                           ;--------------------------------------------------------
+                                           ;	.file	"main.c"
+                                           	list	p=16f877a
+                                           	radix dec
+                                           	include "p16f877a.inc"
+                                                   LIST
+                                           
+                                           ;==========================================================================
+                                           ; Build date : Aug 07 2014
+                                           ;  MPASM PIC16F877A processor include
+                                           ; 
+                                           ;  (c) Copyright 1999-2014 Microchip Technology, All rights reserved
+                                           ;==========================================================================
+                                           
+                                                   NOLIST
+                                           ;--------------------------------------------------------
+                                           ; config word(s)
+                                           ;--------------------------------------------------------
+002007   3f32     addlw   0x32             	__config 0x3f32
+                                           ;--------------------------------------------------------
+                                           ; external declarations
+                                           ;--------------------------------------------------------
+                                           	extern	__print_format
+                                           	extern	_printf_small
+                                           	extern	_printf
+                                           	extern	_vprintf
+                                           	extern	_sprintf
+                                           	extern	_vsprintf
+                                           	extern	_puts
+                                           	extern	_gets
+                                           	extern	_getchar
+                                           	extern	_putchar
+                                           	extern	_calloc
+                                           	extern	_malloc
+                                           	extern	_realloc
+                                           	extern	_free
+                                           	extern	_abs
+                                           	extern	_labs
+                                           	extern	_atof
+                                           	extern	_atoi
+                                           	extern	_atol
+                                           	extern	__uitoa
+                                           	extern	__itoa
+                                           	extern	__ultoa
+                                           	extern	__ltoa
+                                           	extern	_rand
+                                           	extern	_srand
+                                           	extern	_GPIO_Init_Port_pin
+                                           	extern	_GPIO_Init_Port
+                                           	extern	_GPIO_Set_Port_pin
+                                           	extern	_GPIO_Set_Port
+                                           	extern	_GPIO_Get_Port_Pin
+                                           	extern	_GPIO_Get_Port
+                                           	extern	_UTIL_DelayMS
+                                           	extern	_SSD_Init
+                                           	extern	_SSD_SET_Symbol
+                                           	extern	_SSD_SET_state
+                                           	extern	_SSD_GET_state
+                                           	extern	_SSD_GET_Symbol
+                                           	extern	_SSD_update
+                                           	extern	_STATUSbits
+                                           	extern	_PORTAbits
+                                           	extern	_PORTBbits
+                                           	extern	_PORTCbits
+                                           	extern	_PORTDbits
+                                           	extern	_PORTEbits
+                                           	extern	_INTCONbits
+                                           	extern	_PIR1bits
+                                           	extern	_PIR2bits
+                                           	extern	_T1CONbits
+                                           	extern	_T2CONbits
+                                           	extern	_SSPCONbits
+                                           	extern	_CCP1CONbits
+                                           	extern	_RCSTAbits
+                                           	extern	_CCP2CONbits
+                                           	extern	_ADCON0bits
+                                           	extern	_OPTION_REGbits
+                                           	extern	_TRISAbits
+                                           	extern	_TRISBbits
+                                           	extern	_TRISCbits
+                                           	extern	_TRISDbits
+                                           	extern	_TRISEbits
+                                           	extern	_PIE1bits
+                                           	extern	_PIE2bits
+                                           	extern	_PCONbits
+                                           	extern	_SSPCON2bits
+                                           	extern	_SSPSTATbits
+                                           	extern	_TXSTAbits
+                                           	extern	_CMCONbits
+                                           	extern	_CVRCONbits
+                                           	extern	_ADCON1bits
+                                           	extern	_EECON1bits
+                                           	extern	_INDF
+                                           	extern	_TMR0
+                                           	extern	_PCL
+                                           	extern	_STATUS
+                                           	extern	_FSR
+                                           	extern	_PORTA
+                                           	extern	_PORTB
+                                           	extern	_PORTC
+                                           	extern	_PORTD
+                                           	extern	_PORTE
+                                           	extern	_PCLATH
+                                           	extern	_INTCON
+                                           	extern	_PIR1
+                                           	extern	_PIR2
+                                           	extern	_TMR1
+                                           	extern	_TMR1L
+                                           	extern	_TMR1H
+                                           	extern	_T1CON
+                                           	extern	_TMR2
+                                           	extern	_T2CON
+                                           	extern	_SSPBUF
+                                           	extern	_SSPCON
+                                           	extern	_CCPR1
+                                           	extern	_CCPR1L
+                                           	extern	_CCPR1H
+                                           	extern	_CCP1CON
+                                           	extern	_RCSTA
+                                           	extern	_TXREG
+                                           	extern	_RCREG
+                                           	extern	_CCPR2
+                                           	extern	_CCPR2L
+                                           	extern	_CCPR2H
+                                           	extern	_CCP2CON
+                                           	extern	_ADRESH
+                                           	extern	_ADCON0
+                                           	extern	_OPTION_REG
+                                           	extern	_TRISA
+                                           	extern	_TRISB
+                                           	extern	_TRISC
+                                           	extern	_TRISD
+                                           	extern	_TRISE
+                                           	extern	_PIE1
+                                           	extern	_PIE2
+                                           	extern	_PCON
+                                           	extern	_SSPCON2
+                                           	extern	_PR2
+                                           	extern	_SSPADD
+                                           	extern	_SSPSTAT
+                                           	extern	_TXSTA
+                                           	extern	_SPBRG
+                                           	extern	_CMCON
+                                           	extern	_CVRCON
+                                           	extern	_ADRESL
+                                           	extern	_ADCON1
+                                           	extern	_EEDATA
+                                           	extern	_EEADR
+                                           	extern	_EEDATH
+                                           	extern	_EEADRH
+                                           	extern	_EECON1
+                                           	extern	_EECON2
+                                           	extern	__sdcc_gsinit_startup
+                                           ;--------------------------------------------------------
+                                           ; global declarations
+                                           ;--------------------------------------------------------
+                                           	global	_main
+                                           
+                                           	global PSAVE
+                                           	global SSAVE
+                                           	global WSAVE
+                                           	global STK12
+                                           	global STK11
+                                           	global STK10
+                                           	global STK09
+                                           	global STK08
+                                           	global STK07
+                                           	global STK06
+                                           	global STK05
+                                           	global STK04
+                                           	global STK03
+                                           	global STK02
+                                           	global STK01
+                                           	global STK00
+                                           
+                                           sharebank udata_ovr 0x0070
+                                           PSAVE	res 1
+                                           SSAVE	res 1
+                                           WSAVE	res 1
+                                           STK12	res 1
+                                           STK11	res 1
+                                           STK10	res 1
+                                           STK09	res 1
+                                           STK08	res 1
+                                           STK07	res 1
+                                           STK06	res 1
+                                           STK05	res 1
+                                           STK04	res 1
+                                           STK03	res 1
+                                           STK02	res 1
+                                           STK01	res 1
+                                           STK00	res 1
+                                           
+                                           ;--------------------------------------------------------
+                                           ; global definitions
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; absolute symbol definitions
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; compiler-defined variables
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; initialized data
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; overlayable items in internal ram 
+                                           ;--------------------------------------------------------
+                                           ;	udata_ovr
+                                           ;--------------------------------------------------------
+                                           ; reset vector 
+                                           ;--------------------------------------------------------
+                                           STARTUP	code 0x0000
+000000   0000     nop                      	nop
+000001   118a     bcf     0x0a, 0x3        	pagesel __sdcc_gsinit_startup
+000002   120a     bcf     0x0a, 0x4        
+000003   2b62     goto    0x0362           	goto	__sdcc_gsinit_startup
+                                           ;--------------------------------------------------------
+                                           ; code
+                                           ;--------------------------------------------------------
+                                           code_main	code
+                                           ;***
+                                           ;  pBlock Stats: dbName = M
+                                           ;***
+                                           ;entry:  _main	;Function start
+                                           ; 2 exit points
+                                           ;has an exit
+                                           ;functions called:
+                                           ;   _GPIO_Init_Port_pin
+                                           ;   _SSD_Init
+                                           ;   _SSD_Init
+                                           ;   _SSD_Init
+                                           ;   _SSD_Init
+                                           ;   _SSD_update
+                                           ;   _GPIO_Init_Port_pin
+                                           ;   _SSD_Init
+                                           ;   _SSD_Init
+                                           ;   _SSD_Init
+                                           ;   _SSD_Init
+                                           ;   _SSD_update
+                                           ;2 compiler assigned registers:
+                                           ;   STK01
+                                           ;   STK00
+                                           ;; Starting pCode block
+                                           _main	;Function start
+                                           ; 2 exit points
+                                           ;	.line	13; "main.c"	GPIO_Init_Port_pin(PORT_B,0,IN);
+0004d0   3001     movlw   0x01             	MOVLW	0x01
+0004d1   00fe     movwf   0x7e             	MOVWF	STK01
+0004d2   3000     movlw   0x00             	MOVLW	0x00
+0004d3   00ff     movwf   0x7f             	MOVWF	STK00
+0004d4   3006     movlw   0x06             	MOVLW	0x06
+0004d5   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Init_Port_pin
+0004d6   120a     bcf     0x0a, 0x4        
+0004d7   2315     call    0x0315           	CALL	_GPIO_Init_Port_pin
+0004d8   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0004d9   120a     bcf     0x0a, 0x4        
+                                           ;	.line	15; "main.c"	SSD_Init(SSD_L ,OFF,SSD_NULL);
+0004da   300a     movlw   0x0a             	MOVLW	0x0a
+0004db   00fe     movwf   0x7e             	MOVWF	STK01
+0004dc   3000     movlw   0x00             	MOVLW	0x00
+0004dd   00ff     movwf   0x7f             	MOVWF	STK00
+0004de   3000     movlw   0x00             	MOVLW	0x00
+0004df   118a     bcf     0x0a, 0x3        	PAGESEL	_SSD_Init
+0004e0   120a     bcf     0x0a, 0x4        
+0004e1   21c6     call    0x01c6           	CALL	_SSD_Init
+0004e2   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0004e3   120a     bcf     0x0a, 0x4        
+                                           ;	.line	16; "main.c"	SSD_Init(SSD_ML ,OFF,SSD_NULL);
+0004e4   300a     movlw   0x0a             	MOVLW	0x0a
+0004e5   00fe     movwf   0x7e             	MOVWF	STK01
+0004e6   3000     movlw   0x00             	MOVLW	0x00
+0004e7   00ff     movwf   0x7f             	MOVWF	STK00
+0004e8   3001     movlw   0x01             	MOVLW	0x01
+0004e9   118a     bcf     0x0a, 0x3        	PAGESEL	_SSD_Init
+0004ea   120a     bcf     0x0a, 0x4        
+0004eb   21c6     call    0x01c6           	CALL	_SSD_Init
+0004ec   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0004ed   120a     bcf     0x0a, 0x4        
+                                           ;	.line	17; "main.c"	SSD_Init(SSD_MR ,OFF,SSD_NULL);
+0004ee   300a     movlw   0x0a             	MOVLW	0x0a
+0004ef   00fe     movwf   0x7e             	MOVWF	STK01
+0004f0   3000     movlw   0x00             	MOVLW	0x00
+0004f1   00ff     movwf   0x7f             	MOVWF	STK00
+0004f2   3002     movlw   0x02             	MOVLW	0x02
+0004f3   118a     bcf     0x0a, 0x3        	PAGESEL	_SSD_Init
+0004f4   120a     bcf     0x0a, 0x4        
+0004f5   21c6     call    0x01c6           	CALL	_SSD_Init
+0004f6   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0004f7   120a     bcf     0x0a, 0x4        
+                                           ;	.line	18; "main.c"	SSD_Init(SSD_R,OFF,SSD_NULL);
+0004f8   300a     movlw   0x0a             	MOVLW	0x0a
+0004f9   00fe     movwf   0x7e             	MOVWF	STK01
+0004fa   3000     movlw   0x00             	MOVLW	0x00
+0004fb   00ff     movwf   0x7f             	MOVWF	STK00
+0004fc   3003     movlw   0x03             	MOVLW	0x03
+0004fd   118a     bcf     0x0a, 0x3        	PAGESEL	_SSD_Init
+0004fe   120a     bcf     0x0a, 0x4        
+0004ff   21c6     call    0x01c6           	CALL	_SSD_Init
+000500   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000501   120a     bcf     0x0a, 0x4        
+                                           _00106_DS_
+                                           ;	.line	22; "main.c"	SSD_update();
+000502   118a     bcf     0x0a, 0x3        	PAGESEL	_SSD_update
+000503   120a     bcf     0x0a, 0x4        
+000504   2004     call    0x0004           	CALL	_SSD_update
+000505   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000506   120a     bcf     0x0a, 0x4        
+000507   2d02     goto    0x0502           	GOTO	_00106_DS_
+                                           ;	.line	24; "main.c"	return 0;
+000508   0008     return                   	RETURN	
+                                           ; exit point of _main
+                                           
+                                           
+                                           ;	code size estimation:
+                                           ;	   33+   12 =    45 instructions (  114 byte)
+                                           
+                                           	end
+                                           ;--------------------------------------------------------
+                                           ; File Created by SDCC : free open source ANSI-C Compiler
+                                           ; Version 3.5.0 #9253 (Jun 20 2015) (MINGW32)
+                                           ; This file was generated Tue Jun 30 22:58:10 2020
+                                           ;--------------------------------------------------------
+                                           ; PIC port for the 14-bit core
+                                           ;--------------------------------------------------------
+                                           ;	.file	"SSD.c"
+                                           	list	p=16f877a
+                                           	radix dec
+                                           	include "p16f877a.inc"
+                                                   LIST
+                                           
+                                           ;==========================================================================
+                                           ; Build date : Aug 07 2014
+                                           ;  MPASM PIC16F877A processor include
+                                           ; 
+                                           ;  (c) Copyright 1999-2014 Microchip Technology, All rights reserved
+                                           ;==========================================================================
+                                           
+                                                   NOLIST
+                                           ;--------------------------------------------------------
+                                           ; external declarations
+                                           ;--------------------------------------------------------
+                                           	extern	_GPIO_Init_Port_pin
+                                           	extern	_GPIO_Init_Port
+                                           	extern	_GPIO_Set_Port_pin
+                                           	extern	_GPIO_Set_Port
+                                           	extern	_GPIO_Get_Port_Pin
+                                           	extern	_GPIO_Get_Port
+                                           	extern	_UTIL_DelayMS
+                                           	extern	__divuint
+                                           	extern	__moduint
+                                           	extern	__gptrget1
+                                           
+                                           	extern PSAVE
+                                           	extern SSAVE
+                                           	extern WSAVE
+                                           	extern STK12
+                                           	extern STK11
+                                           	extern STK10
+                                           	extern STK09
+                                           	extern STK08
+                                           	extern STK07
+                                           	extern STK06
+                                           	extern STK05
+                                           	extern STK04
+                                           	extern STK03
+                                           	extern STK02
+                                           	extern STK01
+                                           	extern STK00
+                                           ;--------------------------------------------------------
+                                           ; global declarations
+                                           ;--------------------------------------------------------
+                                           	global	_SSD_update
+                                           	global	_SSD_GET_Symbol
+                                           	global	_SSD_GET_state
+                                           	global	_SSD_SET_Symbol
+                                           	global	_SSD_SET_state
+                                           	global	_SSD_Init
+                                           	global	_SSD_symbols
+                                           
+                                           ;--------------------------------------------------------
+                                           ; global definitions
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; absolute symbol definitions
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; compiler-defined variables
+                                           ;--------------------------------------------------------
+                                           UDL_SSD_0	udata
+                                           r0x1011	res	1
+                                           r0x1012	res	1
+                                           r0x1013	res	1
+                                           r0x1006	res	1
+                                           r0x1007	res	1
+                                           r0x1008	res	1
+                                           r0x1010	res	1
+                                           r0x100D	res	1
+                                           r0x100E	res	1
+                                           r0x100A	res	1
+                                           r0x1009	res	1
+                                           r0x100B	res	1
+                                           r0x100C	res	1
+                                           _SSD_update_counter_1_27	res	2
+                                           ;--------------------------------------------------------
+                                           ; initialized data
+                                           ;--------------------------------------------------------
+                                           
+                                           ID_SSD_0	idata
+                                           _SSD_symbols
+                                           	db	0x0a
+                                           	db	0x00
+                                           	db	0x00
+                                           	db	0x00
+                                           
+                                           
+                                           ID_SSD_1	code
+                                           _symbols
+000546   343f     retlw   0x3f             	retlw 0x3f
+000547   3406     retlw   0x06             	retlw 0x06
+000548   345b     retlw   0x5b             	retlw 0x5b
+000549   344f     retlw   0x4f             	retlw 0x4f
+00054a   3466     retlw   0x66             	retlw 0x66
+00054b   346d     retlw   0x6d             	retlw 0x6d
+00054c   347d     retlw   0x7d             	retlw 0x7d
+00054d   3407     retlw   0x07             	retlw 0x07
+00054e   347f     retlw   0x7f             	retlw 0x7f
+00054f   346f     retlw   0x6f             	retlw 0x6f
+000550   3400     retlw   0x00             	retlw 0x00
+                                           
+                                           ;--------------------------------------------------------
+                                           ; overlayable items in internal ram 
+                                           ;--------------------------------------------------------
+                                           ;	udata_ovr
+                                           ;--------------------------------------------------------
+                                           ; code
+                                           ;--------------------------------------------------------
+                                           code_SSD	code
+                                           ;***
+                                           ;  pBlock Stats: dbName = C
+                                           ;***
+                                           ;entry:  _SSD_update	;Function start
+                                           ; 2 exit points
+                                           ;has an exit
+                                           ;functions called:
+                                           ;   __divuint
+                                           ;   _SSD_SET_Symbol
+                                           ;   __moduint
+                                           ;   __divuint
+                                           ;   _SSD_SET_Symbol
+                                           ;   __moduint
+                                           ;   __moduint
+                                           ;   __divuint
+                                           ;   _SSD_SET_Symbol
+                                           ;   __moduint
+                                           ;   _SSD_SET_Symbol
+                                           ;   __gptrget1
+                                           ;   _GPIO_Set_Port
+                                           ;   _SSD_SET_state
+                                           ;   _UTIL_DelayMS
+                                           ;   _GPIO_Get_Port_Pin
+                                           ;   __divuint
+                                           ;   _SSD_SET_Symbol
+                                           ;   __moduint
+                                           ;   __divuint
+                                           ;   _SSD_SET_Symbol
+                                           ;   __moduint
+                                           ;   __moduint
+                                           ;   __divuint
+                                           ;   _SSD_SET_Symbol
+                                           ;   __moduint
+                                           ;   _SSD_SET_Symbol
+                                           ;   __gptrget1
+                                           ;   _GPIO_Set_Port
+                                           ;   _SSD_SET_state
+                                           ;   _UTIL_DelayMS
+                                           ;   _GPIO_Get_Port_Pin
+                                           ;7 compiler assigned registers:
+                                           ;   STK02
+                                           ;   STK01
+                                           ;   STK00
+                                           ;   r0x1009
+                                           ;   r0x100A
+                                           ;   r0x100B
+                                           ;   r0x100C
+                                           ;; Starting pCode block
+                                           _SSD_update	;Function start
+                                           ; 2 exit points
+                                           ;	.line	122; "SSD.c"	SSD_SET_Symbol(SSD_L,(counter/1000));
+000004   30e8     movlw   0xe8             	MOVLW	0xe8
+000005   00fd     movwf   0x7d             	MOVWF	STK02
+000006   3003     movlw   0x03             	MOVLW	0x03
+000007   00fe     movwf   0x7e             	MOVWF	STK01
+000008   1283     bcf     0x03, 0x5        	BANKSEL	_SSD_update_counter_1_27
+000009   1303     bcf     0x03, 0x6        
+00000a   084a     movf    0x4a, 0x0        	MOVF	_SSD_update_counter_1_27,W
+00000b   00ff     movwf   0x7f             	MOVWF	STK00
+00000c   084b     movf    0x4b, 0x0        	MOVF	(_SSD_update_counter_1_27 + 1),W
+00000d   118a     bcf     0x0a, 0x3        	PAGESEL	__divuint
+00000e   120a     bcf     0x0a, 0x4        
+00000f   23fe     call    0x03fe           	CALL	__divuint
+000010   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000011   120a     bcf     0x0a, 0x4        
+000012   1283     bcf     0x03, 0x5        	BANKSEL	r0x1009
+000013   1303     bcf     0x03, 0x6        
+000014   00c7     movwf   0x47             	MOVWF	r0x1009
+000015   087f     movf    0x7f, 0x0        	MOVF	STK00,W
+000016   00c6     movwf   0x46             	MOVWF	r0x100A
+000017   00c8     movwf   0x48             	MOVWF	r0x100B
+000018   00ff     movwf   0x7f             	MOVWF	STK00
+000019   3000     movlw   0x00             	MOVLW	0x00
+00001a   215d     call    0x015d           	CALL	_SSD_SET_Symbol
+                                           ;	.line	123; "SSD.c"	SSD_SET_Symbol(SSD_ML,(counter%1000)/100);
+00001b   30e8     movlw   0xe8             	MOVLW	0xe8
+00001c   00fd     movwf   0x7d             	MOVWF	STK02
+00001d   3003     movlw   0x03             	MOVLW	0x03
+00001e   00fe     movwf   0x7e             	MOVWF	STK01
+00001f   1283     bcf     0x03, 0x5        	BANKSEL	_SSD_update_counter_1_27
+000020   1303     bcf     0x03, 0x6        
+000021   084a     movf    0x4a, 0x0        	MOVF	_SSD_update_counter_1_27,W
+000022   00ff     movwf   0x7f             	MOVWF	STK00
+000023   084b     movf    0x4b, 0x0        	MOVF	(_SSD_update_counter_1_27 + 1),W
+000024   118a     bcf     0x0a, 0x3        	PAGESEL	__moduint
+000025   120a     bcf     0x0a, 0x4        
+000026   244d     call    0x044d           	CALL	__moduint
+000027   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000028   120a     bcf     0x0a, 0x4        
+000029   1283     bcf     0x03, 0x5        	BANKSEL	r0x1009
+00002a   1303     bcf     0x03, 0x6        
+00002b   00c7     movwf   0x47             	MOVWF	r0x1009
+00002c   087f     movf    0x7f, 0x0        	MOVF	STK00,W
+00002d   00c6     movwf   0x46             	MOVWF	r0x100A
+00002e   3064     movlw   0x64             	MOVLW	0x64
+00002f   00fd     movwf   0x7d             	MOVWF	STK02
+000030   3000     movlw   0x00             	MOVLW	0x00
+000031   00fe     movwf   0x7e             	MOVWF	STK01
+000032   0846     movf    0x46, 0x0        	MOVF	r0x100A,W
+000033   00ff     movwf   0x7f             	MOVWF	STK00
+000034   0847     movf    0x47, 0x0        	MOVF	r0x1009,W
+000035   118a     bcf     0x0a, 0x3        	PAGESEL	__divuint
+000036   120a     bcf     0x0a, 0x4        
+000037   23fe     call    0x03fe           	CALL	__divuint
+000038   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000039   120a     bcf     0x0a, 0x4        
+00003a   1283     bcf     0x03, 0x5        	BANKSEL	r0x1009
+00003b   1303     bcf     0x03, 0x6        
+00003c   00c7     movwf   0x47             	MOVWF	r0x1009
+00003d   087f     movf    0x7f, 0x0        	MOVF	STK00,W
+00003e   00c6     movwf   0x46             	MOVWF	r0x100A
+00003f   00c8     movwf   0x48             	MOVWF	r0x100B
+000040   00ff     movwf   0x7f             	MOVWF	STK00
+000041   3001     movlw   0x01             	MOVLW	0x01
+000042   215d     call    0x015d           	CALL	_SSD_SET_Symbol
+                                           ;	.line	124; "SSD.c"	SSD_SET_Symbol(SSD_MR,((counter%1000)%100)/10);
+000043   30e8     movlw   0xe8             	MOVLW	0xe8
+000044   00fd     movwf   0x7d             	MOVWF	STK02
+000045   3003     movlw   0x03             	MOVLW	0x03
+000046   00fe     movwf   0x7e             	MOVWF	STK01
+000047   1283     bcf     0x03, 0x5        	BANKSEL	_SSD_update_counter_1_27
+000048   1303     bcf     0x03, 0x6        
+000049   084a     movf    0x4a, 0x0        	MOVF	_SSD_update_counter_1_27,W
+00004a   00ff     movwf   0x7f             	MOVWF	STK00
+00004b   084b     movf    0x4b, 0x0        	MOVF	(_SSD_update_counter_1_27 + 1),W
+00004c   118a     bcf     0x0a, 0x3        	PAGESEL	__moduint
+00004d   120a     bcf     0x0a, 0x4        
+00004e   244d     call    0x044d           	CALL	__moduint
+00004f   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000050   120a     bcf     0x0a, 0x4        
+000051   1283     bcf     0x03, 0x5        	BANKSEL	r0x1009
+000052   1303     bcf     0x03, 0x6        
+000053   00c7     movwf   0x47             	MOVWF	r0x1009
+000054   087f     movf    0x7f, 0x0        	MOVF	STK00,W
+000055   00c6     movwf   0x46             	MOVWF	r0x100A
+000056   3064     movlw   0x64             	MOVLW	0x64
+000057   00fd     movwf   0x7d             	MOVWF	STK02
+000058   3000     movlw   0x00             	MOVLW	0x00
+000059   00fe     movwf   0x7e             	MOVWF	STK01
+00005a   0846     movf    0x46, 0x0        	MOVF	r0x100A,W
+00005b   00ff     movwf   0x7f             	MOVWF	STK00
+00005c   0847     movf    0x47, 0x0        	MOVF	r0x1009,W
+00005d   118a     bcf     0x0a, 0x3        	PAGESEL	__moduint
+00005e   120a     bcf     0x0a, 0x4        
+00005f   244d     call    0x044d           	CALL	__moduint
+000060   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000061   120a     bcf     0x0a, 0x4        
+000062   1283     bcf     0x03, 0x5        	BANKSEL	r0x1009
+000063   1303     bcf     0x03, 0x6        
+000064   00c7     movwf   0x47             	MOVWF	r0x1009
+000065   087f     movf    0x7f, 0x0        	MOVF	STK00,W
+000066   00c6     movwf   0x46             	MOVWF	r0x100A
+000067   300a     movlw   0x0a             	MOVLW	0x0a
+000068   00fd     movwf   0x7d             	MOVWF	STK02
+000069   3000     movlw   0x00             	MOVLW	0x00
+00006a   00fe     movwf   0x7e             	MOVWF	STK01
+00006b   0846     movf    0x46, 0x0        	MOVF	r0x100A,W
+00006c   00ff     movwf   0x7f             	MOVWF	STK00
+00006d   0847     movf    0x47, 0x0        	MOVF	r0x1009,W
+00006e   118a     bcf     0x0a, 0x3        	PAGESEL	__divuint
+00006f   120a     bcf     0x0a, 0x4        
+000070   23fe     call    0x03fe           	CALL	__divuint
+000071   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000072   120a     bcf     0x0a, 0x4        
+000073   1283     bcf     0x03, 0x5        	BANKSEL	r0x1009
+000074   1303     bcf     0x03, 0x6        
+000075   00c7     movwf   0x47             	MOVWF	r0x1009
+000076   087f     movf    0x7f, 0x0        	MOVF	STK00,W
+000077   00c6     movwf   0x46             	MOVWF	r0x100A
+000078   00c8     movwf   0x48             	MOVWF	r0x100B
+000079   00ff     movwf   0x7f             	MOVWF	STK00
+00007a   3002     movlw   0x02             	MOVLW	0x02
+00007b   215d     call    0x015d           	CALL	_SSD_SET_Symbol
+                                           ;	.line	125; "SSD.c"	SSD_SET_Symbol(SSD_R,counter %10);
+00007c   300a     movlw   0x0a             	MOVLW	0x0a
+00007d   00fd     movwf   0x7d             	MOVWF	STK02
+00007e   3000     movlw   0x00             	MOVLW	0x00
+00007f   00fe     movwf   0x7e             	MOVWF	STK01
+000080   1283     bcf     0x03, 0x5        	BANKSEL	_SSD_update_counter_1_27
+000081   1303     bcf     0x03, 0x6        
+000082   084a     movf    0x4a, 0x0        	MOVF	_SSD_update_counter_1_27,W
+000083   00ff     movwf   0x7f             	MOVWF	STK00
+000084   084b     movf    0x4b, 0x0        	MOVF	(_SSD_update_counter_1_27 + 1),W
+000085   118a     bcf     0x0a, 0x3        	PAGESEL	__moduint
+000086   120a     bcf     0x0a, 0x4        
+000087   244d     call    0x044d           	CALL	__moduint
+000088   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000089   120a     bcf     0x0a, 0x4        
+00008a   1283     bcf     0x03, 0x5        	BANKSEL	r0x1009
+00008b   1303     bcf     0x03, 0x6        
+00008c   00c7     movwf   0x47             	MOVWF	r0x1009
+00008d   087f     movf    0x7f, 0x0        	MOVF	STK00,W
+00008e   00c6     movwf   0x46             	MOVWF	r0x100A
+00008f   00c8     movwf   0x48             	MOVWF	r0x100B
+000090   00ff     movwf   0x7f             	MOVWF	STK00
+000091   3003     movlw   0x03             	MOVLW	0x03
+000092   215d     call    0x015d           	CALL	_SSD_SET_Symbol
+                                           ;	.line	127; "SSD.c"	for(current_ssd=SSD_L ; current_ssd <= SSD_R ; current_ssd++)
+000093   1283     bcf     0x03, 0x5        	BANKSEL	r0x100A
+000094   1303     bcf     0x03, 0x6        
+000095   01c6     clrf    0x46             	CLRF	r0x100A
+                                           _00170_DS_
+                                           ;	.line	129; "SSD.c"	GPIO_Set_Port(PORT_D ,symbols[SSD_symbols[current_ssd]]);
+000096   1283     bcf     0x03, 0x5        	BANKSEL	r0x100A
+000097   1303     bcf     0x03, 0x6        
+000098   0846     movf    0x46, 0x0        	MOVF	r0x100A,W
+000099   3ea0     addlw   0xa0             	ADDLW	(_SSD_symbols + 0)
+00009a   00c7     movwf   0x47             	MOVWF	r0x1009
+00009b   3000     movlw   0x00             	MOVLW	high (_SSD_symbols + 0)
+00009c   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+00009d   3e01     addlw   0x01             	ADDLW	0x01
+00009e   00c8     movwf   0x48             	MOVWF	r0x100B
+00009f   0847     movf    0x47, 0x0        	MOVF	r0x1009,W
+0000a0   1283     bcf     0x03, 0x5        	BANKSEL	FSR
+0000a1   1303     bcf     0x03, 0x6        
+0000a2   0084     movwf   0x04             	MOVWF	FSR
+0000a3   1383     bcf     0x03, 0x7        	BCF	STATUS,7
+0000a4   1283     bcf     0x03, 0x5        	BANKSEL	r0x100B
+0000a5   1303     bcf     0x03, 0x6        
+0000a6   1848     btfsc   0x48, 0x0        	BTFSC	r0x100B,0
+0000a7   1783     bsf     0x03, 0x7        	BSF	STATUS,7
+0000a8   1283     bcf     0x03, 0x5        	BANKSEL	INDF
+0000a9   1303     bcf     0x03, 0x6        
+0000aa   0800     movf    0x00, 0x0        	MOVF	INDF,W
+0000ab   1283     bcf     0x03, 0x5        	BANKSEL	r0x100C
+0000ac   1303     bcf     0x03, 0x6        
+0000ad   00c9     movwf   0x49             	MOVWF	r0x100C
+0000ae   3e46     addlw   0x46             	ADDLW	(_symbols + 0)
+0000af   00c7     movwf   0x47             	MOVWF	r0x1009
+0000b0   3005     movlw   0x05             	MOVLW	high (_symbols + 0)
+0000b1   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+0000b2   3e01     addlw   0x01             	ADDLW	0x01
+0000b3   00c8     movwf   0x48             	MOVWF	r0x100B
+0000b4   0847     movf    0x47, 0x0        	MOVF	r0x1009,W
+0000b5   00fe     movwf   0x7e             	MOVWF	STK01
+0000b6   0848     movf    0x48, 0x0        	MOVF	r0x100B,W
+0000b7   00ff     movwf   0x7f             	MOVWF	STK00
+0000b8   3080     movlw   0x80             	MOVLW	0x80
+0000b9   118a     bcf     0x0a, 0x3        	PAGESEL	__gptrget1
+0000ba   120a     bcf     0x0a, 0x4        
+0000bb   249c     call    0x049c           	CALL	__gptrget1
+0000bc   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0000bd   120a     bcf     0x0a, 0x4        
+0000be   1283     bcf     0x03, 0x5        	BANKSEL	r0x100C
+0000bf   1303     bcf     0x03, 0x6        
+0000c0   00c9     movwf   0x49             	MOVWF	r0x100C
+0000c1   00ff     movwf   0x7f             	MOVWF	STK00
+0000c2   3008     movlw   0x08             	MOVLW	0x08
+0000c3   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Set_Port
+0000c4   120a     bcf     0x0a, 0x4        
+0000c5   228e     call    0x028e           	CALL	_GPIO_Set_Port
+0000c6   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0000c7   120a     bcf     0x0a, 0x4        
+                                           ;	.line	130; "SSD.c"	SSD_SET_state(current_ssd,ON);
+0000c8   3001     movlw   0x01             	MOVLW	0x01
+0000c9   00ff     movwf   0x7f             	MOVWF	STK00
+0000ca   1283     bcf     0x03, 0x5        	BANKSEL	r0x100A
+0000cb   1303     bcf     0x03, 0x6        
+0000cc   0846     movf    0x46, 0x0        	MOVF	r0x100A,W
+0000cd   2177     call    0x0177           	CALL	_SSD_SET_state
+                                           ;	.line	131; "SSD.c"	UTIL_DelayMS(20);
+0000ce   3014     movlw   0x14             	MOVLW	0x14
+0000cf   118a     bcf     0x0a, 0x3        	PAGESEL	_UTIL_DelayMS
+0000d0   120a     bcf     0x0a, 0x4        
+0000d1   2509     call    0x0509           	CALL	_UTIL_DelayMS
+0000d2   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0000d3   120a     bcf     0x0a, 0x4        
+                                           ;	.line	127; "SSD.c"	for(current_ssd=SSD_L ; current_ssd <= SSD_R ; current_ssd++)
+0000d4   1283     bcf     0x03, 0x5        	BANKSEL	r0x100A
+0000d5   1303     bcf     0x03, 0x6        
+0000d6   0ac6     incf    0x46, 0x1        	INCF	r0x100A,F
+                                           ;;swapping arguments (AOP_TYPEs 1/2)
+                                           ;;unsigned compare: left >= lit(0x4=4), size=1
+0000d7   3004     movlw   0x04             	MOVLW	0x04
+0000d8   0246     subwf   0x46, 0x0        	SUBWF	r0x100A,W
+0000d9   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
+0000da   2896     goto    0x0096           	GOTO	_00170_DS_
+                                           ;;genSkipc:3247: created from rifx:027A5DF4
+                                           ;;unsigned compare: left < lit(0x270F=9999), size=2
+                                           ;	.line	133; "SSD.c"	if(counter < 9999){
+0000db   3027     movlw   0x27             	MOVLW	0x27
+0000dc   1283     bcf     0x03, 0x5        	BANKSEL	_SSD_update_counter_1_27
+0000dd   1303     bcf     0x03, 0x6        
+0000de   024b     subwf   0x4b, 0x0        	SUBWF	(_SSD_update_counter_1_27 + 1),W
+0000df   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000e0   28e3     goto    0x00e3           	GOTO	_00188_DS_
+0000e1   300f     movlw   0x0f             	MOVLW	0x0f
+0000e2   024a     subwf   0x4a, 0x0        	SUBWF	_SSD_update_counter_1_27,W
+                                           _00188_DS_
+0000e3   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+0000e4   28f9     goto    0x00f9           	GOTO	_00168_DS_
+                                           ;;genSkipc:3247: created from rifx:027A5DF4
+                                           ;	.line	134; "SSD.c"	if(GPIO_Get_Port_Pin(PORT_B,1) == 0)
+0000e5   3001     movlw   0x01             	MOVLW	0x01
+0000e6   00ff     movwf   0x7f             	MOVWF	STK00
+0000e7   3006     movlw   0x06             	MOVLW	0x06
+0000e8   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Get_Port_Pin
+0000e9   120a     bcf     0x0a, 0x4        
+0000ea   224d     call    0x024d           	CALL	_GPIO_Get_Port_Pin
+0000eb   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0000ec   120a     bcf     0x0a, 0x4        
+0000ed   1283     bcf     0x03, 0x5        	BANKSEL	r0x100A
+0000ee   1303     bcf     0x03, 0x6        
+0000ef   00c6     movwf   0x46             	MOVWF	r0x100A
+0000f0   0846     movf    0x46, 0x0        	MOVF	r0x100A,W
+0000f1   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000f2   28fd     goto    0x00fd           	GOTO	_00172_DS_
+                                           ;	.line	136; "SSD.c"	counter ++ ;
+0000f3   1283     bcf     0x03, 0x5        	BANKSEL	_SSD_update_counter_1_27
+0000f4   1303     bcf     0x03, 0x6        
+0000f5   0aca     incf    0x4a, 0x1        	INCF	_SSD_update_counter_1_27,F
+0000f6   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+0000f7   0acb     incf    0x4b, 0x1        	INCF	(_SSD_update_counter_1_27 + 1),F
+0000f8   28fd     goto    0x00fd           	GOTO	_00172_DS_
+                                           _00168_DS_
+                                           ;	.line	139; "SSD.c"	counter = 0 ;
+0000f9   1283     bcf     0x03, 0x5        	BANKSEL	_SSD_update_counter_1_27
+0000fa   1303     bcf     0x03, 0x6        
+0000fb   01ca     clrf    0x4a             	CLRF	_SSD_update_counter_1_27
+0000fc   01cb     clrf    0x4b             	CLRF	(_SSD_update_counter_1_27 + 1)
+                                           _00172_DS_
+0000fd   0008     return                   	RETURN	
+                                           ; exit point of _SSD_update
+                                           
+                                           ;***
+                                           ;  pBlock Stats: dbName = C
+                                           ;***
+                                           ;entry:  _SSD_GET_Symbol	;Function start
+                                           ; 2 exit points
+                                           ;has an exit
+                                           ;3 compiler assigned registers:
+                                           ;   r0x100D
+                                           ;   r0x100E
+                                           ;   r0x100F
+                                           ;; Starting pCode block
+                                           _SSD_GET_Symbol	;Function start
+                                           ; 2 exit points
+                                           ;	.line	107; "SSD.c"	SSD_symbol SSD_GET_Symbol(tSSD ssd){
+0000fe   1283     bcf     0x03, 0x5        	BANKSEL	r0x100D
+0000ff   1303     bcf     0x03, 0x6        
+000100   00c4     movwf   0x44             	MOVWF	r0x100D
+                                           ;	.line	111; "SSD.c"	ret = SSD_symbols[ssd];
+000101   3ea0     addlw   0xa0             	ADDLW	(_SSD_symbols + 0)
+000102   00c4     movwf   0x44             	MOVWF	r0x100D
+000103   3000     movlw   0x00             	MOVLW	high (_SSD_symbols + 0)
+000104   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+000105   3e01     addlw   0x01             	ADDLW	0x01
+000106   00c5     movwf   0x45             	MOVWF	r0x100E
+000107   0844     movf    0x44, 0x0        	MOVF	r0x100D,W
+000108   1283     bcf     0x03, 0x5        	BANKSEL	FSR
+000109   1303     bcf     0x03, 0x6        
+00010a   0084     movwf   0x04             	MOVWF	FSR
+00010b   1383     bcf     0x03, 0x7        	BCF	STATUS,7
+00010c   1283     bcf     0x03, 0x5        	BANKSEL	r0x100E
+00010d   1303     bcf     0x03, 0x6        
+00010e   1845     btfsc   0x45, 0x0        	BTFSC	r0x100E,0
+00010f   1783     bsf     0x03, 0x7        	BSF	STATUS,7
+000110   1283     bcf     0x03, 0x5        	BANKSEL	INDF
+000111   1303     bcf     0x03, 0x6        
+000112   0800     movf    0x00, 0x0        	MOVF	INDF,W
+                                           ;;1	MOVWF	r0x100F
+                                           ;	.line	113; "SSD.c"	return ret;
+000113   0008     return                   	RETURN	
+                                           ; exit point of _SSD_GET_Symbol
+                                           
+                                           ;***
+                                           ;  pBlock Stats: dbName = C
+                                           ;***
+                                           ;entry:  _SSD_GET_state	;Function start
+                                           ; 2 exit points
+                                           ;has an exit
+                                           ;functions called:
+                                           ;   _GPIO_Get_Port_Pin
+                                           ;   _GPIO_Get_Port_Pin
+                                           ;   _GPIO_Get_Port_Pin
+                                           ;   _GPIO_Get_Port_Pin
+                                           ;   _GPIO_Get_Port_Pin
+                                           ;   _GPIO_Get_Port_Pin
+                                           ;   _GPIO_Get_Port_Pin
+                                           ;   _GPIO_Get_Port_Pin
+                                           ;2 compiler assigned registers:
+                                           ;   r0x1010
+                                           ;   STK00
+                                           ;; Starting pCode block
+                                           _SSD_GET_state	;Function start
+                                           ; 2 exit points
+                                           ;	.line	82; "SSD.c"	SSD_STATE SSD_GET_state(tSSD ssd)
+000114   1283     bcf     0x03, 0x5        	BANKSEL	r0x1010
+000115   1303     bcf     0x03, 0x6        
+000116   00c3     movwf   0x43             	MOVWF	r0x1010
+                                           ;;swapping arguments (AOP_TYPEs 1/2)
+                                           ;;unsigned compare: left >= lit(0x4=4), size=1
+                                           ;	.line	84; "SSD.c"	switch(ssd)
+000117   3004     movlw   0x04             	MOVLW	0x04
+000118   0243     subwf   0x43, 0x0        	SUBWF	r0x1010,W
+000119   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+00011a   295c     goto    0x015c           	GOTO	_00149_DS_
+                                           ;;genSkipc:3247: created from rifx:027A5DF4
+00011b   3001     movlw   0x01             	MOVLW	HIGH(_00155_DS_)
+00011c   1283     bcf     0x03, 0x5        	BANKSEL	PCLATH
+00011d   1303     bcf     0x03, 0x6        
+00011e   008a     movwf   0x0a             	MOVWF	PCLATH
+00011f   3029     movlw   0x29             	MOVLW	_00155_DS_
+000120   1283     bcf     0x03, 0x5        	BANKSEL	r0x1010
+000121   1303     bcf     0x03, 0x6        
+000122   0743     addwf   0x43, 0x0        	ADDWF	r0x1010,W
+000123   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
+000124   2928     goto    0x0128           	GOTO	_00001_DS_
+000125   1283     bcf     0x03, 0x5        	BANKSEL	PCLATH
+000126   1303     bcf     0x03, 0x6        
+000127   0a8a     incf    0x0a, 0x1        	INCF	PCLATH,F
+                                           _00001_DS_
+000128   0082     movwf   0x02             	MOVWF	PCL
+                                           _00155_DS_
+000129   292d     goto    0x012d           	GOTO	_00143_DS_
+00012a   2939     goto    0x0139           	GOTO	_00144_DS_
+00012b   2945     goto    0x0145           	GOTO	_00145_DS_
+00012c   2951     goto    0x0151           	GOTO	_00146_DS_
+                                           _00143_DS_
+                                           ;	.line	88; "SSD.c"	return GPIO_Get_Port_Pin(PORT_B,7);
+00012d   3007     movlw   0x07             	MOVLW	0x07
+00012e   00ff     movwf   0x7f             	MOVWF	STK00
+00012f   3006     movlw   0x06             	MOVLW	0x06
+000130   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Get_Port_Pin
+000131   120a     bcf     0x0a, 0x4        
+000132   224d     call    0x024d           	CALL	_GPIO_Get_Port_Pin
+000133   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000134   120a     bcf     0x0a, 0x4        
+000135   1283     bcf     0x03, 0x5        	BANKSEL	r0x1010
+000136   1303     bcf     0x03, 0x6        
+000137   00c3     movwf   0x43             	MOVWF	r0x1010
+000138   295c     goto    0x015c           	GOTO	_00149_DS_
+                                           _00144_DS_
+                                           ;	.line	91; "SSD.c"	return GPIO_Get_Port_Pin(PORT_B,6);
+000139   3006     movlw   0x06             	MOVLW	0x06
+00013a   00ff     movwf   0x7f             	MOVWF	STK00
+00013b   3006     movlw   0x06             	MOVLW	0x06
+00013c   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Get_Port_Pin
+00013d   120a     bcf     0x0a, 0x4        
+00013e   224d     call    0x024d           	CALL	_GPIO_Get_Port_Pin
+00013f   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000140   120a     bcf     0x0a, 0x4        
+000141   1283     bcf     0x03, 0x5        	BANKSEL	r0x1010
+000142   1303     bcf     0x03, 0x6        
+000143   00c3     movwf   0x43             	MOVWF	r0x1010
+000144   295c     goto    0x015c           	GOTO	_00149_DS_
+                                           _00145_DS_
+                                           ;	.line	94; "SSD.c"	return GPIO_Get_Port_Pin(PORT_B,5);
+000145   3005     movlw   0x05             	MOVLW	0x05
+000146   00ff     movwf   0x7f             	MOVWF	STK00
+000147   3006     movlw   0x06             	MOVLW	0x06
+000148   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Get_Port_Pin
+000149   120a     bcf     0x0a, 0x4        
+00014a   224d     call    0x024d           	CALL	_GPIO_Get_Port_Pin
+00014b   118a     bcf     0x0a, 0x3        	PAGESEL	$
+00014c   120a     bcf     0x0a, 0x4        
+00014d   1283     bcf     0x03, 0x5        	BANKSEL	r0x1010
+00014e   1303     bcf     0x03, 0x6        
+00014f   00c3     movwf   0x43             	MOVWF	r0x1010
+000150   295c     goto    0x015c           	GOTO	_00149_DS_
+                                           _00146_DS_
+                                           ;	.line	97; "SSD.c"	return GPIO_Get_Port_Pin(PORT_B,4);
+000151   3004     movlw   0x04             	MOVLW	0x04
+000152   00ff     movwf   0x7f             	MOVWF	STK00
+000153   3006     movlw   0x06             	MOVLW	0x06
+000154   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Get_Port_Pin
+000155   120a     bcf     0x0a, 0x4        
+000156   224d     call    0x024d           	CALL	_GPIO_Get_Port_Pin
+000157   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000158   120a     bcf     0x0a, 0x4        
+000159   1283     bcf     0x03, 0x5        	BANKSEL	r0x1010
+00015a   1303     bcf     0x03, 0x6        
+00015b   00c3     movwf   0x43             	MOVWF	r0x1010
+                                           _00149_DS_
+                                           ;	.line	102; "SSD.c"	}
+00015c   0008     return                   	RETURN	
+                                           ; exit point of _SSD_GET_state
+                                           
+                                           ;***
+                                           ;  pBlock Stats: dbName = C
+                                           ;***
+                                           ;entry:  _SSD_SET_Symbol	;Function start
+                                           ; 2 exit points
+                                           ;has an exit
+                                           ;4 compiler assigned registers:
+                                           ;   r0x1006
+                                           ;   STK00
+                                           ;   r0x1007
+                                           ;   r0x1008
+                                           ;; Starting pCode block
+                                           _SSD_SET_Symbol	;Function start
+                                           ; 2 exit points
+                                           ;	.line	76; "SSD.c"	void SSD_SET_Symbol(tSSD ssd ,SSD_symbol symbol)
+00015d   1283     bcf     0x03, 0x5        	BANKSEL	r0x1006
+00015e   1303     bcf     0x03, 0x6        
+00015f   00c0     movwf   0x40             	MOVWF	r0x1006
+000160   087f     movf    0x7f, 0x0        	MOVF	STK00,W
+000161   00c1     movwf   0x41             	MOVWF	r0x1007
+                                           ;	.line	78; "SSD.c"	SSD_symbols[ssd] = symbol ;
+000162   0840     movf    0x40, 0x0        	MOVF	r0x1006,W
+000163   3ea0     addlw   0xa0             	ADDLW	(_SSD_symbols + 0)
+000164   00c0     movwf   0x40             	MOVWF	r0x1006
+000165   3000     movlw   0x00             	MOVLW	high (_SSD_symbols + 0)
+000166   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+000167   3e01     addlw   0x01             	ADDLW	0x01
+000168   00c2     movwf   0x42             	MOVWF	r0x1008
+000169   0840     movf    0x40, 0x0        	MOVF	r0x1006,W
+00016a   1283     bcf     0x03, 0x5        	BANKSEL	FSR
+00016b   1303     bcf     0x03, 0x6        
+00016c   0084     movwf   0x04             	MOVWF	FSR
+00016d   1383     bcf     0x03, 0x7        	BCF	STATUS,7
+00016e   1283     bcf     0x03, 0x5        	BANKSEL	r0x1008
+00016f   1303     bcf     0x03, 0x6        
+000170   1842     btfsc   0x42, 0x0        	BTFSC	r0x1008,0
+000171   1783     bsf     0x03, 0x7        	BSF	STATUS,7
+000172   0841     movf    0x41, 0x0        	MOVF	r0x1007,W
+000173   1283     bcf     0x03, 0x5        	BANKSEL	INDF
+000174   1303     bcf     0x03, 0x6        
+000175   0080     movwf   0x00             	MOVWF	INDF
+000176   0008     return                   	RETURN	
+                                           ; exit point of _SSD_SET_Symbol
+                                           
+                                           ;***
+                                           ;  pBlock Stats: dbName = C
+                                           ;***
+                                           ;entry:  _SSD_SET_state	;Function start
+                                           ; 2 exit points
+                                           ;has an exit
+                                           ;functions called:
+                                           ;   _GPIO_Set_Port_pin
+                                           ;   _GPIO_Set_Port_pin
+                                           ;   _GPIO_Set_Port_pin
+                                           ;   _GPIO_Set_Port_pin
+                                           ;   _GPIO_Set_Port_pin
+                                           ;   _GPIO_Set_Port_pin
+                                           ;   _GPIO_Set_Port_pin
+                                           ;   _GPIO_Set_Port_pin
+                                           ;4 compiler assigned registers:
+                                           ;   r0x1006
+                                           ;   STK00
+                                           ;   r0x1007
+                                           ;   STK01
+                                           ;; Starting pCode block
+                                           _SSD_SET_state	;Function start
+                                           ; 2 exit points
+                                           ;	.line	52; "SSD.c"	void SSD_SET_state(tSSD ssd ,SSD_STATE state)
+000177   1283     bcf     0x03, 0x5        	BANKSEL	r0x1006
+000178   1303     bcf     0x03, 0x6        
+000179   00c0     movwf   0x40             	MOVWF	r0x1006
+00017a   087f     movf    0x7f, 0x0        	MOVF	STK00,W
+00017b   00c1     movwf   0x41             	MOVWF	r0x1007
+                                           ;;swapping arguments (AOP_TYPEs 1/2)
+                                           ;;unsigned compare: left >= lit(0x4=4), size=1
+                                           ;	.line	54; "SSD.c"	switch(ssd)
+00017c   3004     movlw   0x04             	MOVLW	0x04
+00017d   0240     subwf   0x40, 0x0        	SUBWF	r0x1006,W
+00017e   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+00017f   29c5     goto    0x01c5           	GOTO	_00128_DS_
+                                           ;;genSkipc:3247: created from rifx:027A5DF4
+000180   3001     movlw   0x01             	MOVLW	HIGH(_00134_DS_)
+000181   1283     bcf     0x03, 0x5        	BANKSEL	PCLATH
+000182   1303     bcf     0x03, 0x6        
+000183   008a     movwf   0x0a             	MOVWF	PCLATH
+000184   308e     movlw   0x8e             	MOVLW	_00134_DS_
+000185   1283     bcf     0x03, 0x5        	BANKSEL	r0x1006
+000186   1303     bcf     0x03, 0x6        
+000187   0740     addwf   0x40, 0x0        	ADDWF	r0x1006,W
+000188   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
+000189   298d     goto    0x018d           	GOTO	_00002_DS_
+00018a   1283     bcf     0x03, 0x5        	BANKSEL	PCLATH
+00018b   1303     bcf     0x03, 0x6        
+00018c   0a8a     incf    0x0a, 0x1        	INCF	PCLATH,F
+                                           _00002_DS_
+00018d   0082     movwf   0x02             	MOVWF	PCL
+                                           _00134_DS_
+00018e   2992     goto    0x0192           	GOTO	_00122_DS_
+00018f   299f     goto    0x019f           	GOTO	_00123_DS_
+000190   29ac     goto    0x01ac           	GOTO	_00124_DS_
+000191   29b9     goto    0x01b9           	GOTO	_00125_DS_
+                                           _00122_DS_
+                                           ;	.line	58; "SSD.c"	GPIO_Set_Port_pin(PORT_B,7,state);
+000192   1283     bcf     0x03, 0x5        	BANKSEL	r0x1007
+000193   1303     bcf     0x03, 0x6        
+000194   0841     movf    0x41, 0x0        	MOVF	r0x1007,W
+000195   00fe     movwf   0x7e             	MOVWF	STK01
+000196   3007     movlw   0x07             	MOVLW	0x07
+000197   00ff     movwf   0x7f             	MOVWF	STK00
+000198   3006     movlw   0x06             	MOVLW	0x06
+000199   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Set_Port_pin
+00019a   120a     bcf     0x0a, 0x4        
+00019b   22d2     call    0x02d2           	CALL	_GPIO_Set_Port_pin
+00019c   118a     bcf     0x0a, 0x3        	PAGESEL	$
+00019d   120a     bcf     0x0a, 0x4        
+                                           ;	.line	59; "SSD.c"	break;
+00019e   29c5     goto    0x01c5           	GOTO	_00128_DS_
+                                           _00123_DS_
+                                           ;	.line	61; "SSD.c"	GPIO_Set_Port_pin(PORT_B,6,state);
+00019f   1283     bcf     0x03, 0x5        	BANKSEL	r0x1007
+0001a0   1303     bcf     0x03, 0x6        
+0001a1   0841     movf    0x41, 0x0        	MOVF	r0x1007,W
+0001a2   00fe     movwf   0x7e             	MOVWF	STK01
+0001a3   3006     movlw   0x06             	MOVLW	0x06
+0001a4   00ff     movwf   0x7f             	MOVWF	STK00
+0001a5   3006     movlw   0x06             	MOVLW	0x06
+0001a6   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Set_Port_pin
+0001a7   120a     bcf     0x0a, 0x4        
+0001a8   22d2     call    0x02d2           	CALL	_GPIO_Set_Port_pin
+0001a9   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0001aa   120a     bcf     0x0a, 0x4        
+                                           ;	.line	62; "SSD.c"	break;
+0001ab   29c5     goto    0x01c5           	GOTO	_00128_DS_
+                                           _00124_DS_
+                                           ;	.line	64; "SSD.c"	GPIO_Set_Port_pin(PORT_B,5,state);
+0001ac   1283     bcf     0x03, 0x5        	BANKSEL	r0x1007
+0001ad   1303     bcf     0x03, 0x6        
+0001ae   0841     movf    0x41, 0x0        	MOVF	r0x1007,W
+0001af   00fe     movwf   0x7e             	MOVWF	STK01
+0001b0   3005     movlw   0x05             	MOVLW	0x05
+0001b1   00ff     movwf   0x7f             	MOVWF	STK00
+0001b2   3006     movlw   0x06             	MOVLW	0x06
+0001b3   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Set_Port_pin
+0001b4   120a     bcf     0x0a, 0x4        
+0001b5   22d2     call    0x02d2           	CALL	_GPIO_Set_Port_pin
+0001b6   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0001b7   120a     bcf     0x0a, 0x4        
+                                           ;	.line	65; "SSD.c"	break;
+0001b8   29c5     goto    0x01c5           	GOTO	_00128_DS_
+                                           _00125_DS_
+                                           ;	.line	67; "SSD.c"	GPIO_Set_Port_pin(PORT_B,4,state);
+0001b9   1283     bcf     0x03, 0x5        	BANKSEL	r0x1007
+0001ba   1303     bcf     0x03, 0x6        
+0001bb   0841     movf    0x41, 0x0        	MOVF	r0x1007,W
+0001bc   00fe     movwf   0x7e             	MOVWF	STK01
+0001bd   3004     movlw   0x04             	MOVLW	0x04
+0001be   00ff     movwf   0x7f             	MOVWF	STK00
+0001bf   3006     movlw   0x06             	MOVLW	0x06
+0001c0   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Set_Port_pin
+0001c1   120a     bcf     0x0a, 0x4        
+0001c2   22d2     call    0x02d2           	CALL	_GPIO_Set_Port_pin
+0001c3   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0001c4   120a     bcf     0x0a, 0x4        
+                                           _00128_DS_
+                                           ;	.line	72; "SSD.c"	}
+0001c5   0008     return                   	RETURN	
+                                           ; exit point of _SSD_SET_state
+                                           
+                                           ;***
+                                           ;  pBlock Stats: dbName = C
+                                           ;***
+                                           ;entry:  _SSD_Init	;Function start
+                                           ; 2 exit points
+                                           ;has an exit
+                                           ;functions called:
+                                           ;   _GPIO_Init_Port
+                                           ;   __gptrget1
+                                           ;   _GPIO_Set_Port
+                                           ;   _GPIO_Init_Port_pin
+                                           ;   _GPIO_Init_Port_pin
+                                           ;   _GPIO_Init_Port_pin
+                                           ;   _GPIO_Init_Port_pin
+                                           ;   _SSD_SET_state
+                                           ;   _SSD_SET_Symbol
+                                           ;   _GPIO_Init_Port
+                                           ;   __gptrget1
+                                           ;   _GPIO_Set_Port
+                                           ;   _GPIO_Init_Port_pin
+                                           ;   _GPIO_Init_Port_pin
+                                           ;   _GPIO_Init_Port_pin
+                                           ;   _GPIO_Init_Port_pin
+                                           ;   _SSD_SET_state
+                                           ;   _SSD_SET_Symbol
+                                           ;6 compiler assigned registers:
+                                           ;   r0x1011
+                                           ;   STK00
+                                           ;   r0x1012
+                                           ;   STK01
+                                           ;   r0x1013
+                                           ;   r0x1014
+                                           ;; Starting pCode block
+                                           _SSD_Init	;Function start
+                                           ; 2 exit points
+                                           ;	.line	21; "SSD.c"	void SSD_Init(tSSD ssd ,SSD_STATE initial_state , SSD_symbol initial_symbol)
+0001c6   1283     bcf     0x03, 0x5        	BANKSEL	r0x1011
+0001c7   1303     bcf     0x03, 0x6        
+0001c8   00bd     movwf   0x3d             	MOVWF	r0x1011
+0001c9   087f     movf    0x7f, 0x0        	MOVF	STK00,W
+0001ca   00be     movwf   0x3e             	MOVWF	r0x1012
+0001cb   087e     movf    0x7e, 0x0        	MOVF	STK01,W
+0001cc   00bf     movwf   0x3f             	MOVWF	r0x1013
+                                           ;	.line	25; "SSD.c"	GPIO_Init_Port(PORT_D,OUT);
+0001cd   3000     movlw   0x00             	MOVLW	0x00
+0001ce   00ff     movwf   0x7f             	MOVWF	STK00
+0001cf   3008     movlw   0x08             	MOVLW	0x08
+0001d0   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Init_Port
+0001d1   120a     bcf     0x0a, 0x4        
+0001d2   229d     call    0x029d           	CALL	_GPIO_Init_Port
+0001d3   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0001d4   120a     bcf     0x0a, 0x4        
+                                           ;	.line	26; "SSD.c"	GPIO_Set_Port(PORT_D,symbols[SSD_NULL]);
+0001d5   3050     movlw   0x50             	MOVLW	(_symbols + 10)
+0001d6   00fe     movwf   0x7e             	MOVWF	STK01
+0001d7   3005     movlw   0x05             	MOVLW	high (_symbols + 10)
+0001d8   00ff     movwf   0x7f             	MOVWF	STK00
+0001d9   3080     movlw   0x80             	MOVLW	0x80
+0001da   118a     bcf     0x0a, 0x3        	PAGESEL	__gptrget1
+0001db   120a     bcf     0x0a, 0x4        
+0001dc   249c     call    0x049c           	CALL	__gptrget1
+0001dd   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0001de   120a     bcf     0x0a, 0x4        
+                                           ;;1	MOVWF	r0x1014
+0001df   00ff     movwf   0x7f             	MOVWF	STK00
+0001e0   3008     movlw   0x08             	MOVLW	0x08
+0001e1   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Set_Port
+0001e2   120a     bcf     0x0a, 0x4        
+0001e3   228e     call    0x028e           	CALL	_GPIO_Set_Port
+0001e4   118a     bcf     0x0a, 0x3        	PAGESEL	$
+0001e5   120a     bcf     0x0a, 0x4        
+                                           ;;swapping arguments (AOP_TYPEs 1/2)
+                                           ;;unsigned compare: left >= lit(0x4=4), size=1
+                                           ;	.line	28; "SSD.c"	switch(ssd)
+0001e6   3004     movlw   0x04             	MOVLW	0x04
+0001e7   1283     bcf     0x03, 0x5        	BANKSEL	r0x1011
+0001e8   1303     bcf     0x03, 0x6        
+0001e9   023d     subwf   0x3d, 0x0        	SUBWF	r0x1011,W
+0001ea   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+0001eb   2a29     goto    0x0229           	GOTO	_00110_DS_
+                                           ;;genSkipc:3247: created from rifx:027A5DF4
+0001ec   3001     movlw   0x01             	MOVLW	HIGH(_00117_DS_)
+0001ed   1283     bcf     0x03, 0x5        	BANKSEL	PCLATH
+0001ee   1303     bcf     0x03, 0x6        
+0001ef   008a     movwf   0x0a             	MOVWF	PCLATH
+0001f0   30fa     movlw   0xfa             	MOVLW	_00117_DS_
+0001f1   1283     bcf     0x03, 0x5        	BANKSEL	r0x1011
+0001f2   1303     bcf     0x03, 0x6        
+0001f3   073d     addwf   0x3d, 0x0        	ADDWF	r0x1011,W
+0001f4   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
+0001f5   29f9     goto    0x01f9           	GOTO	_00003_DS_
+0001f6   1283     bcf     0x03, 0x5        	BANKSEL	PCLATH
+0001f7   1303     bcf     0x03, 0x6        
+0001f8   0a8a     incf    0x0a, 0x1        	INCF	PCLATH,F
+                                           _00003_DS_
+0001f9   0082     movwf   0x02             	MOVWF	PCL
+                                           _00117_DS_
+0001fa   29fe     goto    0x01fe           	GOTO	_00105_DS_
+0001fb   2a09     goto    0x0209           	GOTO	_00106_DS_
+0001fc   2a14     goto    0x0214           	GOTO	_00107_DS_
+0001fd   2a1f     goto    0x021f           	GOTO	_00108_DS_
+                                           _00105_DS_
+                                           ;	.line	32; "SSD.c"	GPIO_Init_Port_pin(PORT_B,7,OUT);
+0001fe   3000     movlw   0x00             	MOVLW	0x00
+0001ff   00fe     movwf   0x7e             	MOVWF	STK01
+000200   3007     movlw   0x07             	MOVLW	0x07
+000201   00ff     movwf   0x7f             	MOVWF	STK00
+000202   3006     movlw   0x06             	MOVLW	0x06
+000203   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Init_Port_pin
+000204   120a     bcf     0x0a, 0x4        
+000205   2315     call    0x0315           	CALL	_GPIO_Init_Port_pin
+000206   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000207   120a     bcf     0x0a, 0x4        
+                                           ;	.line	33; "SSD.c"	break;
+000208   2a29     goto    0x0229           	GOTO	_00110_DS_
+                                           _00106_DS_
+                                           ;	.line	35; "SSD.c"	GPIO_Init_Port_pin(PORT_B,6,OUT);
+000209   3000     movlw   0x00             	MOVLW	0x00
+00020a   00fe     movwf   0x7e             	MOVWF	STK01
+00020b   3006     movlw   0x06             	MOVLW	0x06
+00020c   00ff     movwf   0x7f             	MOVWF	STK00
+00020d   3006     movlw   0x06             	MOVLW	0x06
+00020e   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Init_Port_pin
+00020f   120a     bcf     0x0a, 0x4        
+000210   2315     call    0x0315           	CALL	_GPIO_Init_Port_pin
+000211   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000212   120a     bcf     0x0a, 0x4        
+                                           ;	.line	36; "SSD.c"	break;
+000213   2a29     goto    0x0229           	GOTO	_00110_DS_
+                                           _00107_DS_
+                                           ;	.line	38; "SSD.c"	GPIO_Init_Port_pin(PORT_B,5,OUT);
+000214   3000     movlw   0x00             	MOVLW	0x00
+000215   00fe     movwf   0x7e             	MOVWF	STK01
+000216   3005     movlw   0x05             	MOVLW	0x05
+000217   00ff     movwf   0x7f             	MOVWF	STK00
+000218   3006     movlw   0x06             	MOVLW	0x06
+000219   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Init_Port_pin
+00021a   120a     bcf     0x0a, 0x4        
+00021b   2315     call    0x0315           	CALL	_GPIO_Init_Port_pin
+00021c   118a     bcf     0x0a, 0x3        	PAGESEL	$
+00021d   120a     bcf     0x0a, 0x4        
+                                           ;	.line	39; "SSD.c"	break;
+00021e   2a29     goto    0x0229           	GOTO	_00110_DS_
+                                           _00108_DS_
+                                           ;	.line	41; "SSD.c"	GPIO_Init_Port_pin(PORT_B,4,OUT);
+00021f   3000     movlw   0x00             	MOVLW	0x00
+000220   00fe     movwf   0x7e             	MOVWF	STK01
+000221   3004     movlw   0x04             	MOVLW	0x04
+000222   00ff     movwf   0x7f             	MOVWF	STK00
+000223   3006     movlw   0x06             	MOVLW	0x06
+000224   118a     bcf     0x0a, 0x3        	PAGESEL	_GPIO_Init_Port_pin
+000225   120a     bcf     0x0a, 0x4        
+000226   2315     call    0x0315           	CALL	_GPIO_Init_Port_pin
+000227   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000228   120a     bcf     0x0a, 0x4        
+                                           _00110_DS_
+                                           ;	.line	48; "SSD.c"	SSD_SET_state(ssd,initial_state);
+000229   1283     bcf     0x03, 0x5        	BANKSEL	r0x1012
+00022a   1303     bcf     0x03, 0x6        
+00022b   083e     movf    0x3e, 0x0        	MOVF	r0x1012,W
+00022c   00ff     movwf   0x7f             	MOVWF	STK00
+00022d   083d     movf    0x3d, 0x0        	MOVF	r0x1011,W
+00022e   118a     bcf     0x0a, 0x3        	PAGESEL	_SSD_SET_state
+00022f   120a     bcf     0x0a, 0x4        
+000230   2177     call    0x0177           	CALL	_SSD_SET_state
+000231   118a     bcf     0x0a, 0x3        	PAGESEL	$
+000232   120a     bcf     0x0a, 0x4        
+                                           ;	.line	49; "SSD.c"	SSD_SET_Symbol(ssd , initial_symbol);
+000233   1283     bcf     0x03, 0x5        	BANKSEL	r0x1013
+000234   1303     bcf     0x03, 0x6        
+000235   083f     movf    0x3f, 0x0        	MOVF	r0x1013,W
+000236   00ff     movwf   0x7f             	MOVWF	STK00
+000237   083d     movf    0x3d, 0x0        	MOVF	r0x1011,W
+000238   118a     bcf     0x0a, 0x3        	PAGESEL	_SSD_SET_Symbol
+000239   120a     bcf     0x0a, 0x4        
+00023a   215d     call    0x015d           	CALL	_SSD_SET_Symbol
+00023b   118a     bcf     0x0a, 0x3        	PAGESEL	$
+00023c   120a     bcf     0x0a, 0x4        
+00023d   0008     return                   	RETURN	
+                                           ; exit point of _SSD_Init
+                                           
+                                           
+                                           ;	code size estimation:
+                                           ;	  348+  111 =   459 instructions ( 1140 byte)
+                                           
+                                           	end
+                                           ;--------------------------------------------------------
+                                           ; File Created by SDCC : free open source ANSI-C Compiler
+                                           ; Version 3.5.0 #9253 (Jun 20 2015) (MINGW32)
+                                           ; This file was generated Tue Jun 30 22:58:10 2020
+                                           ;--------------------------------------------------------
+                                           ; PIC port for the 14-bit core
+                                           ;--------------------------------------------------------
+                                           ;	.file	"utilities.c"
+                                           	list	p=16f877a
+                                           	radix dec
+                                           	include "p16f877a.inc"
+                                                   LIST
+                                           
+                                           ;==========================================================================
+                                           ; Build date : Aug 07 2014
+                                           ;  MPASM PIC16F877A processor include
+                                           ; 
+                                           ;  (c) Copyright 1999-2014 Microchip Technology, All rights reserved
+                                           ;==========================================================================
+                                           
+                                                   NOLIST
+                                           ;--------------------------------------------------------
+                                           ; external declarations
+                                           ;--------------------------------------------------------
+                                           
+                                           	extern PSAVE
+                                           	extern SSAVE
+                                           	extern WSAVE
+                                           	extern STK12
+                                           	extern STK11
+                                           	extern STK10
+                                           	extern STK09
+                                           	extern STK08
+                                           	extern STK07
+                                           	extern STK06
+                                           	extern STK05
+                                           	extern STK04
+                                           	extern STK03
+                                           	extern STK02
+                                           	extern STK01
+                                           	extern STK00
+                                           ;--------------------------------------------------------
+                                           ; global declarations
+                                           ;--------------------------------------------------------
+                                           	global	_UTIL_DelayMS
+                                           
+                                           ;--------------------------------------------------------
+                                           ; global definitions
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; absolute symbol definitions
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; compiler-defined variables
+                                           ;--------------------------------------------------------
+                                           UDL_utilities_0	udata
+                                           r0x1000	res	1
+                                           r0x1001	res	1
+                                           r0x1002	res	1
+                                           r0x1003	res	1
+                                           r0x1004	res	1
+                                           r0x1005	res	1
+                                           r0x1006	res	1
+                                           ;--------------------------------------------------------
+                                           ; initialized data
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; overlayable items in internal ram 
+                                           ;--------------------------------------------------------
+                                           ;	udata_ovr
+                                           ;--------------------------------------------------------
+                                           ; code
+                                           ;--------------------------------------------------------
+                                           code_utilities	code
+                                           ;***
+                                           ;  pBlock Stats: dbName = C
+                                           ;***
+                                           ;entry:  _UTIL_DelayMS	;Function start
+                                           ; 2 exit points
+                                           ;has an exit
+                                           ;7 compiler assigned registers:
+                                           ;   r0x1000
+                                           ;   r0x1001
+                                           ;   r0x1002
+                                           ;   r0x1003
+                                           ;   r0x1004
+                                           ;   r0x1005
+                                           ;   r0x1006
+                                           ;; Starting pCode block
+                                           _UTIL_DelayMS	;Function start
+                                           ; 2 exit points
+                                           ;	.line	3; "utilities.c"	void UTIL_DelayMS(unsigned char delay_ms)
+000509   1283     bcf     0x03, 0x5        	BANKSEL	r0x1000
+00050a   1303     bcf     0x03, 0x6        
+00050b   00e1     movwf   0x61             	MOVWF	r0x1000
+                                           ;	.line	8; "utilities.c"	for (x = 0; x < delay_ms; x++)
+00050c   01e2     clrf    0x62             	CLRF	r0x1001
+00050d   01e3     clrf    0x63             	CLRF	r0x1002
+                                           _00111_DS_
+00050e   1283     bcf     0x03, 0x5        	BANKSEL	r0x1000
+00050f   1303     bcf     0x03, 0x6        
+000510   0861     movf    0x61, 0x0        	MOVF	r0x1000,W
+000511   00e4     movwf   0x64             	MOVWF	r0x1003
+000512   01e5     clrf    0x65             	CLRF	r0x1004
+000513   3000     movlw   0x00             	MOVLW	0x00
+000514   0263     subwf   0x63, 0x0        	SUBWF	r0x1002,W
+000515   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+000516   2d19     goto    0x0519           	GOTO	_00128_DS_
+000517   0864     movf    0x64, 0x0        	MOVF	r0x1003,W
+000518   0262     subwf   0x62, 0x0        	SUBWF	r0x1001,W
+                                           _00128_DS_
+000519   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+00051a   2d37     goto    0x0537           	GOTO	_00113_DS_
+                                           ;;genSkipc:3247: created from rifx:027A5DF4
+                                           ;	.line	10; "utilities.c"	for(y = 0; y <120; y++)
+00051b   3078     movlw   0x78             	MOVLW	0x78
+00051c   1283     bcf     0x03, 0x5        	BANKSEL	r0x1003
+00051d   1303     bcf     0x03, 0x6        
+00051e   00e4     movwf   0x64             	MOVWF	r0x1003
+00051f   01e5     clrf    0x65             	CLRF	r0x1004
+                                           _00109_DS_
+000520   30ff     movlw   0xff             	MOVLW	0xff
+000521   1283     bcf     0x03, 0x5        	BANKSEL	r0x1003
+000522   1303     bcf     0x03, 0x6        
+000523   0764     addwf   0x64, 0x0        	ADDWF	r0x1003,W
+000524   00e6     movwf   0x66             	MOVWF	r0x1005
+000525   30ff     movlw   0xff             	MOVLW	0xff
+000526   00e7     movwf   0x67             	MOVWF	r0x1006
+000527   0865     movf    0x65, 0x0        	MOVF	r0x1004,W
+000528   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+000529   0f65     incfsz  0x65, 0x0        	INCFSZ	r0x1004,W
+00052a   07e7     addwf   0x67, 0x1        	ADDWF	r0x1006,F
+00052b   0866     movf    0x66, 0x0        	MOVF	r0x1005,W
+00052c   00e4     movwf   0x64             	MOVWF	r0x1003
+00052d   0867     movf    0x67, 0x0        	MOVF	r0x1006,W
+00052e   00e5     movwf   0x65             	MOVWF	r0x1004
+00052f   0866     movf    0x66, 0x0        	MOVF	r0x1005,W
+000530   0467     iorwf   0x67, 0x0        	IORWF	r0x1006,W
+000531   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+000532   2d20     goto    0x0520           	GOTO	_00109_DS_
+                                           ;	.line	8; "utilities.c"	for (x = 0; x < delay_ms; x++)
+000533   0ae2     incf    0x62, 0x1        	INCF	r0x1001,F
+000534   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+000535   0ae3     incf    0x63, 0x1        	INCF	r0x1002,F
+000536   2d0e     goto    0x050e           	GOTO	_00111_DS_
+                                           _00113_DS_
+000537   0008     return                   	RETURN	
+                                           ; exit point of _UTIL_DelayMS
+                                           
+                                           
+                                           ;	code size estimation:
+                                           ;	   39+    4 =    43 instructions (   94 byte)
+                                           
+                                           	end
